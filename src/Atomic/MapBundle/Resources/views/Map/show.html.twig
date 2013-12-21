@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="blog-item">
+    <h1>Карта {{ server.name }} </h1>
+
+        {% for map in  maps %}
+    <div class="map">
+        <iframe src="{{ map.getLink }}" width="100%" height="100%" ></iframe>
+    </div>
+        {% else %}
+    Нету карт =/
+{% endfor %}        
+</div>
+
+{% endblock %}

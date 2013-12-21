@@ -1,0 +1,41 @@
+atomic_server_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AtomicServerBundle:Default:index }
+
+atomic_server_list:
+    pattern:  /server/list/
+    defaults: { _controller: AtomicServerBundle:Server:index }
+
+atomic_server_new:
+   pattern:  /server/new/
+   defaults: { _controller: AtomicServerBundle:Server:new }
+   
+atomic_server_create:
+   pattern:  /server/create/
+   defaults: { _controller: AtomicServerBundle:Server:create }
+   
+atomic_server_show:
+   pattern:  /server/show/{id}
+   defaults: { _controller: AtomicServerBundle:Server:show }   
+   
+   
+atomic_server_online_players:
+   pattern:  /server/online-players/{id}
+   defaults: { _controller: AtomicServerBundle:Check:onlinePlayers }      
+   
+atomic_server_edit:
+   pattern:  /server/edit/{id}
+   defaults: { _controller: AtomicServerBundle:Server:edit }  
+
+atomic_server_delete:
+   pattern:  /server/delete/{id}
+   defaults: { _controller: AtomicServerBundle:Server:delete }   
+   
+   
+   
+   
+atomic_server_update:
+   pattern:  /server/update/{id}
+   defaults: { _controller: AtomicServerBundle:Server:update }   
+   
+ 

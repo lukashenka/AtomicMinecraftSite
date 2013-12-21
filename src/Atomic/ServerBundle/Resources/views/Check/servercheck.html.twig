@@ -1,0 +1,38 @@
+{% for status in statuses %}
+
+<div class="server-item">
+    <span class="server-name">{{status['server_name']}}</span>
+{% if status['online'] %}
+    <span class="server-players-status">{{status['Players']}} / {{status['MaxPlayers']}}</span>
+    <div class="progress progress-striped">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{status['Players']}}" aria-valuemin="0" aria-valuemax="{{status['MaxPlayers']}}" style="width: {{status['Players']}}%">
+        </div>
+
+    </div>
+    <div class="info-server"><span class="glyphicon glyphicon-user"></span><a href="{{path('atomic_server_online_players',{"id":status['id']})}}">Кто онлайн?</a></div>
+    <div class="info-server"><span class="glyphicon glyphicon-info-sign"></span><a href="{{path('atomic_server_show',{"id":status['id']})}}">Информация о сервере</a></div>
+    <div class="clearfix clear"></div>
+
+{% else %}
+    <span class="server-players-status"></span>
+    <div class="progress progress-striped">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            оффлайн
+        </div>
+
+    </div>
+    
+    <div class="info-server"><span class="glyphicon glyphicon-info-sign"></span><a href="{{path('atomic_server_show',{"id":status['id']})}}">Информация о сервере</a></div>
+        <div class="clearfix clear"></div>
+
+
+{%endif%}
+
+   <!-- <div class="server-address">Адрес: <i>{{status['ip']}}:{{status['port']}}</i></div> -->
+
+
+</div>
+
+{% else %}
+
+{% endfor %}

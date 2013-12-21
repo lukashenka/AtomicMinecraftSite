@@ -1,0 +1,28 @@
+<ul class="nav navbar-nav">
+
+{% for item in menu %}
+
+    {% if currentRoute == item.route %}
+       {% set class = "active" %}
+{% else %}
+ {% set class = "" %}
+    {%endif %}
+
+    <li class="{{class}}"><a href="
+{% if item.route|length > 1 %}
+    {{ path(item.route) }}
+
+       {% else %}
+
+        {{ item.exlink }}
+
+        {% endif %}
+
+
+           ">{{item.name}}</a></li>
+
+
+{%else %}
+           No menu! WHAT??? oO
+{% endfor %}
+        </ul>

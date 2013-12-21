@@ -1,0 +1,305 @@
+body {
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#e0e0e0), to(#f2f2f2));
+    background-image: -webkit-linear-gradient(top, #e0e0e0, #f2f2f2);
+    background-image: -moz-linear-gradient(top, #e0e0e0, #f2f2f2);
+    background-image: -o-linear-gradient(top, #e0e0e0, #f2f2f2);
+    background-image: -ms-linear-gradient(top, #e0e0e0, #f2f2f2);
+    background-image: linear-gradient(to bottom, #e0e0e0, #f2f2f2);
+}
+
+.main-container.container {
+    background: #e8e8e8;
+    border: 1px solid rgb(218, 218, 218);
+    padding: 0;
+    box-shadow: 1px 1px 1px 1px rgb(224, 224, 224);
+}
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+    background-color: white;
+
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+    background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+    background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+.navbar{
+    background: url('../img/pattern.gif');
+    border-radius: 0px;
+    padding-top: 20px;
+}
+
+
+#atomic-menu li a{
+    color: white;
+    font-size: 16px;
+    transition: background-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+#atomic-menu li:hover a,#atomic-menu li.active a{
+    color: black;
+    
+}
+#atomic-menu li.active {
+background: #e8e8e8;
+}
+#header-left {
+    background: url('../img/header.gif');
+    height: 128px;
+    display: block;
+    background-repeat: no-repeat;
+    width: 542px;
+}
+
+
+
+#sign-in {
+
+    margin: 0;
+    padding-left: 10px;
+}
+
+.form-control.atomic-input {
+    border-radius: 0;
+    height: 27px;
+    width: 147px;
+    background: rgb(241, 241, 241);
+}
+.form-control.atomic-input.first{
+    margin-right: 10px;
+}
+
+.btn.loginbutton {
+    background: white;
+    border: 1px solid rgb(155, 155, 155);
+    border-radius: 0;
+    padding: 6;
+    background-image: linear-gradient(to bottom, #FFFFFF, #D3D3D3);
+}
+
+#profile-inf-small a{
+    color: white!important;
+
+}
+
+#profile-inf-small{
+    height: 95px;
+    color: white!important;
+    font-size: 16px;
+    padding: 17px;
+}
+
+.blog-item {
+padding: 20px;
+border: 1px solid rgb(175, 175, 175);
+
+margin: 20px;
+background: rgb(247, 247, 247);
+}
+
+.blog-item .blog-thumb {
+height: 150px;
+width: 150px;
+border: 1px dotted rgba(0, 0, 0, 0.09);
+float: left;
+
+}
+
+.blog-item h2 a
+{
+    color:black;
+}
+
+.blog-item .date {
+float: right;
+color: gray;
+font-style: italic;
+}
+.blog-item .description {
+padding: 17px;
+float: left;
+width: 500px;
+}
+#footer {
+    color: white;
+    background: url('/img/pattern.gif');
+    height: 100px;
+    padding: 30px;
+
+    text-align: right;
+
+}
+
+#comments {
+border-top: 1px solid rgb(221, 221, 221);
+margin-top: 80px;
+background: rgb(252, 252, 252);
+padding: 10px;
+}
+
+.comment-title {
+
+
+color: rgb(33, 101, 122);
+}
+
+.comment {
+background: rgb(255, 255, 255);
+border: 1px solid rgb(103, 145, 168);
+padding: 10px;
+margin-left: 26px;
+margin-bottom: 20px;
+margin-right: 10px;
+box-shadow: 1px 1px 0px 0px rgb(165, 165, 165);
+}
+
+.highlight {
+font-style: italic;
+font-weight: bold;
+}
+
+#atomic_blogbundle_comment_comment {
+margin-left: 50px;
+width: 91%;
+height: 150px;
+margin-bottom: 20px;
+}
+
+.blog-item  .meta {
+font-size: 11px;
+color: gray;
+font-style: italic;
+padding: 3px;
+}
+
+.fos_user_profile_edit,.fos_user_change_password {
+padding: 10px;
+/*background: rgb(252, 252, 252);*/
+border-top: 1px solid rgb(226, 226, 226);
+}
+
+.fos_user_profile_edit .btn.btn-default,.fos_user_change_password .btn.btn-default{
+margin-top: 15px;
+}
+.fos_user_profile_edit label,.fos_user_change_password label{
+width: 200px;
+}
+.divided {
+border: 1px solid rgb(231, 231, 231);
+background: rgb(243, 243, 243);
+margin-bottom: 15px;
+padding: 11px;
+box-shadow: 2px 2px 1px rgb(236, 236, 236);
+}
+
+.blog-item
+{
+    min-height: 200px;
+}
+
+.content {
+
+margin-top: 12px;
+margin-left: 12px;
+}
+
+.step-number {
+float: left;
+margin-right: 35px;
+font-size: 50px;
+width: 71px;
+border: 1px solid black;
+border-radius: 49;
+text-align: center;
+padding: 0px;
+background: black;
+box-shadow: 1px 1px 1px 1px silver;
+color: white;
+}
+
+#footer p
+{
+    
+    color: white;
+}
+
+
+#footer .left-column
+{
+    float:left;
+}
+#footer .left-column .item
+{
+
+ float: left;   
+ margin-right: 10px;
+}
+
+.server-item {
+border: 1px solid rgb(202, 202, 202);
+margin-bottom: 16px;
+box-shadow: 1px 1px 21px -8px gray;
+padding: 9px;
+}
+
+.server-players-status {
+float: right;
+}
+
+.new-users {
+background: white;
+padding: 10px;
+border: 1px solid rgb(235, 235, 235);
+}
+
+.new-user {
+border-bottom: 1px solid rgb(243, 243, 243);
+margin-bottom: 7px;
+color: rgb(0, 0, 109);
+text-align: center;
+}
+
+.server-item-map {
+background: white;
+padding: 10px;
+border: 1px solid rgb(224, 224, 224);
+font-size: 25px;
+margin-bottom: 20px;
+}
+
+.server-item-map:hover {
+box-shadow: 1px 1px 15px 1px rgb(233, 233, 233);
+}
+
+.info-server {
+font-size: 10px;
+float: right;
+padding-right: 4px;
+}
+
+.exchanger-form {
+padding: 0px 20px;
+}
+
+#steve canvas {
+width: 793px;
+margin-left: -144px;
+height: 400px;
+}

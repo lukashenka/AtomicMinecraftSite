@@ -1,0 +1,9 @@
+{% extends 'AtomicBlogBundle::layout.html.twig' %}
+
+{% block content %}
+
+<div class="blog-item">
+    <h1>Операция успешно выполнена</h1>
+Поздравляем {{permission.getChild}}! Теперь вы {{status}} до {{permission.getExpired|date("m:h d-m-Y")}}
+</div>
+{%endblock %}

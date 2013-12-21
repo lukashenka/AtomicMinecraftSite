@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="blog-item">
+    <h1>Онлайн на сервере {{server.name}}</h1>
+    <ol>  
+    {%for player in players %}
+            <li><div class="player-name">{{player.username}}</div></li>
+    {%else %}
+            <div class="notify-novalues">Нет игроков онлайн</div>
+    {%endfor %}
+        </ol> 
+    </div>
+{% endblock %}

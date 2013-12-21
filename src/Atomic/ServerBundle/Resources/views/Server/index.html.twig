@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block content -%}
+    <h1>Server list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ip</th>
+                 <th>Port</th>
+                <th>Name</th>
+               
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('atomic_server_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.ip }}</td>
+                <td>{{ entity.port }}</td>
+                <td>{{ entity.name }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('atomic_server_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('atomic_server_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('atomic_server_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {%  endblock %}

@@ -1,0 +1,38 @@
+{% extends 'AtomicBlogBundle::layout.html.twig' %}
+
+{% block content %}
+{% if is_user_admin %}
+<a href="{{path("AtomicBlogBundle_blog_create")}}">Новый пост</a>
+{% endif %}
+    {% for blog in blogs %}
+<article class="blog-item">
+    <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('d-m-Y') }}</time></div>
+    <header>
+        <h2><a href="{{ path('AtomicBlogBundle_blog_show', { 'id': blog.id }) }}">{{ blog.title }}</a></h2>
+    </header>
+
+    <div class="blog-thumb thumbnail">
+        <img src="{{ asset(['img/blog/', blog.image]|join| imagine_filter('blog_thumb')) }}" />
+    </div>
+    <div class="description">
+       {{ blog.blog(200)|striptags|raw  }}
+            <footer class="meta">
+                <p>Комментариев: {{ blog.comments|length }}</p>
+                <!-- <p>Posted by <span class="highlight">{{ blog.author }}</span> at {{ blog.created|date('h:iA') }}</p> -->
+
+            </footer>
+            <p class="continue"><a href="{{ path('AtomicBlogBundle_blog_show', { 'id': blog.id }) }}">Подробнее...</a></p>
+        </div>
+        <div class="clearfix"></div>
+
+    </article>
+   
+    {% else %}
+    <p>Нету контента</p>
+    {% endfor %}
+    
+     <div id="blog-pagination" class="pagination">
+
+            {% include 'AtomicBlogBundle:Blog:pagination.html.twig' with { 'items': blogs } %}
+    </div>
+{% endblock content %}

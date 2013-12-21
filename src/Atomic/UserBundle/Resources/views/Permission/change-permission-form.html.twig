@@ -1,0 +1,10 @@
+    <form action="{{ path('atomic_change_status') }}" {{ form_enctype(form) }} method="POST" >
+         {{ form_start(form) }}
+         {{ form_errors(form) }}
+         {{ form_row(form.permissions, { 'attr': {'class': 'form-control'} }) }}
+
+            <div style="margin-top: 10px">
+                <input type="submit" class="btn btn-default" value="Обновить" />
+            </div>
+        {{ form_end(form) }}
+        </form>

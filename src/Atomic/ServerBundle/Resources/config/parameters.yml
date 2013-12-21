@@ -1,0 +1,16 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: atomic
+
+    database_user: root
+    database_password: 666fucku
+    mailer_transport: smtp
+    mailer_host: smtp.yandex.ru
+    mailer_user: support@atomic.im
+    mailer_password: javahujava
+    locale: ru
+    secret: 42
+    
+   

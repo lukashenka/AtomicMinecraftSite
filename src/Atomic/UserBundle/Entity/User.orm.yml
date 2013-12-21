@@ -1,0 +1,9 @@
+# src/Acme/UserBundle/Resources/config/doctrine/User.orm.yml
+Atomic\UserBundle\Entity\User:
+    type:  entity
+    table: atomic_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

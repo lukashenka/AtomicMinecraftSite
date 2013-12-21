@@ -1,0 +1,10 @@
+{% extends 'AtomicBlogBundle::layout.html.twig' %}
+
+{% block body %}
+    {% if is_user_registered %}
+    {% include 'AtomicBlogBundle:Comment:form.html.twig' with { 'form': form } %}
+    {% else %}
+Войдите
+{%endif %} 
+
+{% endblock %}

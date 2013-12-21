@@ -1,0 +1,7 @@
+parameters:
+#    atomic_api.example.class: Atomic\ApiBundle\Example
+
+services:
+#    atomic_api.example:
+#        class: %atomic_api.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

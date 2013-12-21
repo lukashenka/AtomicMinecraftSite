@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+{% block content -%}
+    <h1>User</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Usernamecanonical</th>
+                <td>{{ user.usernameCanonical }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Emailcanonical</th>
+                <td>{{ user.emailCanonical }}</td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{{ user.enabled }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ user.salt }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{{ user.lastLogin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Locked</th>
+                <td>{{ user.locked }}</td>
+            </tr>
+            <tr>
+                <th>Expired</th>
+                <td>{{ user.expired }}</td>
+            </tr>
+          
+            <tr>
+                <th>Confirmationtoken</th>
+                <td>{{ user.confirmationToken }}</td>
+            </tr>
+            <tr>
+                <th>Passwordrequestedat</th>
+                <td>{{ user.passwordRequestedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles }}</td>
+            </tr>
+            <tr>
+                <th>Credentialsexpired</th>
+                <td>{{ user.credentialsExpired }}</td>
+            </tr>
+        
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Coins</th>
+                <td>{{ user.coins }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+  
+{% endblock %}

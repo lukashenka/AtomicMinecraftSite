@@ -1,0 +1,40 @@
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div id="profile-inf-small">
+{% if  is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div>
+            <span class="bold greeting">Приветсвуем Вас, </span><span class="username">{{app.user.username}}</span>
+        </div>
+        <div>
+            <span class="bold">У вас на счету </span><span class="coins-count"><strong>{{app.user.coins}}</strong> рублей</span>  
+        </div>
+        <div><a href="{{path('fos_user_security_logout') }}">[Выйти]</a></div>
+{% else %}
+
+        <a href="/register"><img src="/img/register.png" alt="Регистрация"/></a>
+        <a href="/register"><span style="
+                                  font-size: 18px;
+                                  margin-left: 16px;
+
+                                  ">[Регистрация]</span></a>
+
+    {% endif %}
+            </div>
+{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <form action="{{ path("fos_user_security_check") }}" method="post" id="sign-in" class="navbar-form">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <div class="form-group">
+
+                    <input type="text" class="form-control atomic-input first" id="username" name="_username" value="{{ last_username }}" placeholder="Имя || email" required="required" />
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control atomic-input first" id="password" name="_password" placeholder="Пароль" required="required" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn loginbutton" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                </div>
+            </form>
+{% endif %}

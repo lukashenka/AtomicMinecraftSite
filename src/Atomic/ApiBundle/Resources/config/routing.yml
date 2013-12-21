@@ -1,0 +1,5 @@
+atomic_api_topcraft_vote:
+    pattern:  /topcraft/vote
+    defaults: { _controller: AtomicApiBundle:Topcraft:vote }
+    requirements:
+        _method:  POST    

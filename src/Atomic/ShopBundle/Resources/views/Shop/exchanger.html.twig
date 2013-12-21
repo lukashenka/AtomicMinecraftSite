@@ -1,0 +1,122 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+
+<div class="blog-item">
+    <h4>Информация </h4>
+
+    <div class="exchanger-status">
+
+        <p>Текущий курс игровых рублей:</p>
+
+        <p>Покупка с сервера  Hitech - {{kurs_str_h}} шиш.</p>
+        <p>Покупка с сервера  Classic - {{kurs_str_c}} шиш.</p>
+        
+        
+        <p>Продажа  - {{kurs_rts}} шиш.</p>
+
+        <div class="balance">
+
+            <p>На счету - <span class="shishs">{{user.getCoins}}</span> рублей </p>
+        </div>
+        <div class="balance">
+
+            <p>Ваш баланс на Hitech - <span class="shishs">{{hitechStatus.getBalance}}</span> шишей </p>
+        </div>
+        <div class="balance">
+
+            <p>Ваш баланс на Classic - <span class="shishs">{{classicStatus.getBalance}}</span> шишей </p>
+        </div>
+
+    </div> 
+</div>
+
+<div class="blog-item">
+
+    <h4>Купить рубли! </h4>
+    <div class="exchanger-form">
+             {% render controller('AtomicShopBundle:Interkassa:pay') %}
+        </div>
+    </div>
+
+
+
+
+    <div class="blog-item">
+        <h4>Купить шишы на сервере Hitech</h4>
+        <div class="exchanger-form">
+            <form class="form-horizontal" role="form" action="{{ path('atomic_shop_buyshishs')}}" method="post" {{ form_enctype(rtsHitech) }} >
+  {{ form_start(rtsHitech) }}
+         {{ form_errors(rtsHitech) }}
+                    <div class="form-group">  
+                 {{ form_row(rtsHitech.shishs, { 'attr': {'label':'Количество шишей','class': 'form-control number ','min':0,'max': kurs_rts * user.getCoins  ,'step':kurs_rts }}) }}
+                        </div>
+                        <div class="form-group">  
+                            <input type="submit" class="btn btn-default" value="Купить">
+                        </div>
+
+{{ form_end(rtsHitech) }}
+                </div>
+            </div>
+
+
+            <div class="blog-item">
+                <h4>Купить шишы на сервере Classic</h4>
+                <div class="exchanger-form">
+                    <form class="form-horizontal" role="form" action="{{ path('atomic_shop_buyshishs')}}" method="post" {{ form_enctype(rtsClassic) }} >
+  {{ form_start(rtsClassic) }}
+         {{ form_errors(rtsClassic) }}
+                            <div class="form-group">  
+                 {{ form_row(rtsClassic.shishs, { 'attr': {'label':'Количество шишей','class': 'form-control number ','min':0,'max': kurs_rts * user.getCoins  ,'step':kurs_rts }}) }}
+                                </div>
+                                <div class="form-group">  
+                                    <input type="submit" class="btn btn-default" value="Купить">
+                                </div>
+
+{{ form_end(rtsClassic) }}
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="blog-item">
+                        <h4>Перевести  шишы в рубли с сервера Hitech</h4>
+                        <div class="exchanger-form">
+                            <form class="form-horizontal" role="form" action="{{ path('atomic_shop_buyrubles')}}" method="post" {{ form_enctype(strHitech) }} >
+  {{ form_start(strHitech) }}
+         {{ form_errors(strHitech) }}
+                                    <div class="form-group">  
+                 {{ form_row(strHitech.rubles, { 'attr': {'label':'Количество рублей','class': 'form-control number ','min':0,'max': hitechStatus.getBalance//kurs_str_h ,'step':1 }}) }}
+                                        </div>
+                                        <div class="form-group">  
+                                            <input type="submit" class="btn btn-default" value="Купить">
+                                        </div>
+
+{{ form_end(strHitech) }}
+                                </div>
+                            </div>
+
+
+                            <div class="blog-item">
+                                <h4>Перевести шишы в рубли с сервера Classic</h4>
+                                <div class="exchanger-form">
+                                    <form class="form-horizontal" role="form" action="{{ path('atomic_shop_buyrubles')}}" method="post" {{ form_enctype(strClassic) }} >
+  {{ form_start(strClassic) }}
+         {{ form_errors(strClassic) }}
+                                            <div class="form-group">  
+                 {{ form_row(strClassic.rubles, { 'attr': {'label':'Количество рублей','class': 'form-control number ','min':0,'max': classicStatus.getBalance//kurs_str_c    ,'step':1 }}) }}
+                                                </div>
+                                                <div class="form-group">  
+                                                    <input type="submit" class="btn btn-default" value="Купить">
+                                                </div>
+
+{{ form_end(strClassic) }}
+                                        </div>
+                                    </div>
+
+
+{% endblock content %}

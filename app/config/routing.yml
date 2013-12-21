@@ -1,0 +1,60 @@
+atomic_api:
+    resource: "@AtomicApiBundle/Resources/config/routing.yml"
+    prefix:   /api/
+
+atomic_map:
+    resource: "@AtomicMapBundle/Resources/config/routing.yml"
+    prefix:   /
+
+atomic_shop:
+    resource: "@AtomicShopBundle/Resources/config/routing.yml"
+   #host:	shop.atomic.im	
+    prefix:   /shop
+
+atomic_main_menu:
+    resource: "@AtomicMainMenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+atomic_server:
+    resource: "@AtomicServerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+atomic_user:
+    resource: "@AtomicUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+atomic_fast_start:
+    resource: "@AtomicFastStartBundle/Resources/config/routing.yml"
+    prefix:   /
+
+atomic_blog:
+    resource: "@AtomicBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+    
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group
+    
+    
+_imagine:
+    resource: .
+    type:     imagine

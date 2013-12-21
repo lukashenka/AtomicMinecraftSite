@@ -1,0 +1,7 @@
+parameters:
+#    atomic_server.example.class: Atomic\ServerBundle\Example
+
+services:
+   atomic_server.status:
+       class: Atomic\ServerBundle\Services\CheckServerService 
+     

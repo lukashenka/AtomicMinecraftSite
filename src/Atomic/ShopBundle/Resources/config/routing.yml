@@ -1,0 +1,50 @@
+atomic_shop_homepage:
+    pattern:  /
+    defaults: { _controller: AtomicShopBundle:Shop:index }
+
+atomic_shop_exchanger:
+    pattern:  /exchanger/
+    defaults: { _controller: AtomicShopBundle:Shop:exchanger}
+
+atomic_interkassa_test:
+    pattern:  /test/
+    defaults: { _controller: AtomicShopBundle:Interkassa:pay }
+    
+atomic_interkassa_donut:
+    pattern:  /donut/
+    defaults: { _controller: AtomicShopBundle:Interkassa:donut }
+    requirements:
+        _method:  POST      
+
+atomic_shop_buyshishs:
+    pattern:  /buyshishs/
+    defaults: { _controller: AtomicShopBundle:Shop:buyshishs }
+    requirements:
+        _method:  POST       
+        
+atomic_shop_buyrubles:
+    pattern:  /buyrubles/
+    defaults: { _controller: AtomicShopBundle:Shop:buyrubles }
+    requirements:
+        _method:  POST              
+    
+    
+atomic_shop_success:
+    pattern:  /success/
+    defaults: { _controller: AtomicShopBundle:Interkassa:success }
+    requirements:
+        _method:  POST   
+
+
+atomic_shop_result:
+    pattern:  /result/
+    defaults: { _controller: AtomicShopBundle:Interkassa:result }
+    requirements:
+        _method:  POST      
+    
+atomic_shop_fail:
+    pattern:  /fail/
+    defaults: { _controller: AtomicShopBundle:Interkassa:fail }    
+    requirements:
+        _method:  POST   
+

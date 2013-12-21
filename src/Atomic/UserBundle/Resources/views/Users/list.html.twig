@@ -1,0 +1,10 @@
+{% extends 'AtomicBlogBundle::layout.html.twig' %}
+{% block content %}
+  {% for user in users %}
+<a href="{{ path('atomic_user_show', { 'id': user.id }) }}">{{user.username}} </a>
+
+    {% else %}
+<p>There are no blog entries for symblog</p>
+    {% endfor %}
+
+{% endblock content %}

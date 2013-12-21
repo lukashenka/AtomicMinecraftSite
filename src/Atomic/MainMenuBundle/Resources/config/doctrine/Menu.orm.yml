@@ -1,0 +1,23 @@
+Atomic\MainMenuBundle\Entity\Menu:
+    type: entity
+    table: atomic_menu
+    repositoryClass: Atomic\MainMenuBundle\Entity\MenuRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        route:
+            type: string
+            length: 255
+        exlink:
+            type: string
+            length: 255
+        ordering:
+            type: integer
+            length: 255
+    lifecycleCallbacks: {  }

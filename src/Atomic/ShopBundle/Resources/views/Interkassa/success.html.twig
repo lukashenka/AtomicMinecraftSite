@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+
+<div class="blog-item">
+    <h1>Оплата зафиксирована</h1>
+    
+    <p>На счет зачислено {{transaction.getMoney}} рублей</p>
+</div>
+
+
+{% endblock %}

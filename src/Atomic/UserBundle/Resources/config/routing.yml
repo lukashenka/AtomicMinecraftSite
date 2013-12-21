@@ -1,0 +1,25 @@
+atomic_user_list:
+    pattern:  /users/
+    defaults: { _controller: AtomicUserBundle:Users:list }
+    
+atomic_user_profile:
+    pattern:  /profile
+    defaults: { _controller: AtomicUserBundle:Users:profile }    
+    
+atomic_user_show:
+    pattern:  /user/show/{id}
+    defaults: { _controller: AtomicUserBundle:Users:show }    
+    
+atomic_change_status:
+    pattern:  /user/change-status/
+    defaults: { _controller: AtomicUserBundle:Permission:changeStatus }    
+    
+atomic_tuning:
+    pattern:  /tuning
+    defaults: { _controller: AtomicUserBundle:Tuning:index }        
+    
+    
+atomic_tuning_uploadskin:    
+    pattern:  /tuning/uploadskin
+    defaults: { _controller: AtomicUserBundle:Tuning:uploadSkin }     
+  

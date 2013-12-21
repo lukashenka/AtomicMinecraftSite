@@ -1,0 +1,50 @@
+{# src/Blogger/BlogBundle/Resouces/views/Blog/show.html.twig #}
+{% extends 'AtomicBlogBundle::layout.html.twig' %}
+
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block content %}
+{% if is_user_administrator %}
+
+<a href="{{path("AtomicBlogBundle_blog_edit",{'blog_id':blog.id})}}">Редактировать</a>
+<a href="{{path("AtomicBlogBundle_blog_delete",{'blog_id':blog.id})}}">Удалить</a>
+
+{% endif %}
+<article class="blog blog-item">
+    <header>
+        <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+        <h2>{{ blog.title }}</h2>
+    </header>
+  <!--  <img src="{{ asset(['img/blog/', blog.image]|join) }}" alt="{{ blog.title }} image not found" class="large" /> -->
+    <div>
+        {{ blog.blog|raw }}
+        </div>
+        <section class="comments" id="comments">
+            <section class="previous-comments">
+                <h3 class="comment-title">Коментарии</h3>
+
+            {% include 'AtomicBlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+            </section>
+       {%if not comments is null %}   
+
+   {% if is_registered_user %}
+            <h3 class="comment-title">Добавить коментарий</h3>
+        {% render controller('AtomicBlogBundle:Comment:new',{ 'blog_id': blog.id }) %}
+    {% else %}
+            <h4 style="margin-left:10px;">Залогинтесь чтобы добавить новый комментарий</h4>
+
+    {%endif %} 
+
+            {%endif %}
+
+            <div id="comment-pagination" class="pagination">
+
+            {% include 'AtomicBlogBundle:Comment:pagination.html.twig' with {'blog_id':blog.id, 'items': comments } %}
+            </div>
+        </section>
+
+    </article>
+
+
+
+{% endblock content %}

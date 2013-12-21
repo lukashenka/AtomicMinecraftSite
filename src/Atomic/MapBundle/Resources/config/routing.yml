@@ -1,0 +1,27 @@
+atomic_map_homepage:
+    pattern:  /map
+    defaults: { _controller: AtomicMapBundle:Map:index }
+
+atomic_map_new:
+    pattern:  /map/new
+    defaults: { _controller: AtomicMapBundle:Map:new }
+    
+atomic_map_create:
+    pattern:  /map/create
+    defaults: { _controller: AtomicMapBundle:Map:create }
+    
+atomic_map_edit:
+    pattern:  /map/edit/{id}
+    defaults: { _controller: AtomicMapBundle:Map:edit }   
+  
+atomic_map_update:
+    pattern:  /map/update/{id}
+    defaults: { _controller: AtomicMapBundle:Map:update }       
+    
+atomic_map_delete:
+    pattern:  /map/delete/{id}
+    defaults: { _controller: AtomicMapBundle:Map:delete }     
+    
+atomic_map_show:
+    pattern:  /map/show/{id}
+    defaults: { _controller: AtomicMapBundle:Map:show }           

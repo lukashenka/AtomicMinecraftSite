@@ -1,0 +1,14 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+     {{ form_start(form) }}
+         {{ form_errors(form) }}
+         {{ form_row(form.email, { 'attr': {'class': 'form-control email '} }) }}
+         {{ form_row(form.username, { 'attr': {'class': 'form-control '} }) }}
+         {{ form_row(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+         {{ form_row(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+     
+
+        <input type="submit" class="btn btn-default" value="{{ 'registration.submit'|trans }}" />
+   {{ form_end(form) }}
+</form>

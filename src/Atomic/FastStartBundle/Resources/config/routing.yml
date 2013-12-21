@@ -1,0 +1,29 @@
+AtomicFirstStartBundle_homepage:
+    pattern:  /boostrap
+    defaults: { _controller: AtomicFastStartBundle:Faststart:index  }
+
+AtomicFirstStartBundle_addstep:
+    pattern:  /boostrap/addstep
+    defaults: { _controller: AtomicFastStartBundle:Faststart:new }
+    
+AtomicFirstStartBundle_delete_step:
+    pattern:  /boostrap/delete-step/{id}
+    defaults: { _controller: AtomicFastStartBundle:Faststart:delete }
+
+AtomicFirstStartBundle_create:
+    pattern:  /boostrap/create
+    defaults: { _controller: AtomicFastStartBundle:Faststart:create }   
+    requirements:
+        _method:  POST    
+
+AtomicBlogBundle_faststart_edit:
+    pattern:  /boostrap/edit/{id}
+    defaults: { _controller: AtomicFastStartBundle:Faststart:edit }
+    requirements:
+        id: \d+         
+        
+AtomicBlogBundle_faststart_editsave:
+    pattern:  /boostrap/edit/save
+    defaults: { _controller: AtomicFastStartBundle:Faststart:editSave }
+    requirements:
+         _method:  POST                 

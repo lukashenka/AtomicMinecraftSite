@@ -1,0 +1,7 @@
+parameters:
+#    atomic_main_menu.example.class: Atomic\MainMenuBundle\Example
+
+services:
+#    atomic_main_menu.example:
+#        class: %atomic_main_menu.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

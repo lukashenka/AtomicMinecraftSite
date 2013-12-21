@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block content -%}
+{{ tinymce_init() }}
+    <h1>Server edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('atomic_server_list') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="blog-item">
+    <h1>Операция успешно выполнена</h1>
+    
+    {% if operation == "rts" %}
+    <p>С вашего счета списано {{deltaCoins}} рублей. Добавлено {{shishs}} шишей.</p>
+
+    {% elseif operation == "str"  %}
+
+    <p>С на ваш счёт добавлено {{deltaCoins}} рублей. Списано {{shishs}} шишей.</p>
+    {% endif %}
+</div>
+
+
+{% endblock content %}

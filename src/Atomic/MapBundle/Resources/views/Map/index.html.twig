@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block content -%}
+<div class="blog-item">
+<h1>Список серверов</h1>
+
+        {% for server in servers %}
+<div class="server-item-map">
+    <a href="{{ path('atomic_map_show', { 'id': server.id }) }}">{{ server.name }}</a>
+</div>
+
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+parameters:
+#    atomic_fast_start.example.class: Atomic\FastStartBundle\Example
+
+services:
+#    atomic_fast_start.example:
+#        class: %atomic_fast_start.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

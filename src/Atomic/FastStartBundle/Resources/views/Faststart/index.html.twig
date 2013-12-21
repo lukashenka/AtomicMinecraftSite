@@ -1,0 +1,26 @@
+
+{% extends '::base.html.twig' %}
+
+{% block content %}
+{% if is_user_administrator %}
+<a href="{{path("AtomicFirstStartBundle_addstep")}}">Добавить шаг</a>
+{% endif %}
+    {% for f_item in fast_start %}
+<article id="step{{f_item.step}}" class="blog-item faststart-item ">
+    {% if is_user_administrator %}
+        <a href="{{path("AtomicBlogBundle_faststart_edit",{'id':f_item.id})}}">Редактировать</a>
+        <a href="{{path("AtomicFirstStartBundle_delete_step",{'id':f_item.id})}}">Удалить</a>
+{% endif %}
+        <div class="step-number">
+        {{f_item.step}}
+            </div>
+
+            <div class="content">
+        {{f_item.content|raw}}
+                </div>
+
+            </article> 
+    {% else %}
+            <p>Нету ничего :/</p>
+    {% endfor %}
+{% endblock content %}

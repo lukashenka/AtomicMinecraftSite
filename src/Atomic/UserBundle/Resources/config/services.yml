@@ -1,0 +1,17 @@
+parameters:
+#    atomic_user.example.class: Atomic\UserBundle\Example
+
+services:
+    atomic_user.profile.form.type:
+        class: Atomic\UserBundle\Form\Type\ProfileFormType
+        arguments: ['%fos_user.model.user.class%']
+        tags:
+            - { name: form.type, alias: atomic_user_profile }
+            
+    atomic_user.user.status.type:
+        class: Atomic\UserBundle\Form\UserStatusType
+        arguments:
+            - "%user_statuses%"
+        tags:
+            - { name: form.type, alias: user_statuses }
+

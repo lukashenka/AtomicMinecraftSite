@@ -1,0 +1,4 @@
+<p>Ваш статус: {{permission.getStatus}}</p>
+{% if   permission.getExpired is  defined %}
+<p>Истекает {{ permission.getExpired|date('d-m-Y',"Europe/Moscow") }} в {{ permission.getExpired|date('h:m:s') }}</p>
+{% endif %}

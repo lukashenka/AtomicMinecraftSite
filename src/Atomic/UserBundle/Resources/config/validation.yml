@@ -1,0 +1,18 @@
+Atomic\UserBundle\Entity\User:
+    properties:
+        username:
+            - Regex:
+                pattern: "/[a-zA-Z0-9._-]{3,50}/"
+                match:   true
+                message: Имя не может содержать специальные символы и следовать паттерну "[a-zA-Z0-9._-]{3,}"
+        plainPassword:
+            - Regex:
+                pattern: "/[a-zA-Z0-9._-]{3,50}/"
+                match:   true
+                message: Пароль не может содержать специальные символы и следовать паттерну "[a-zA-Z0-9._-]{3,}"
+
+Atomic\UserBundle\Entity\Skin:
+    properties:
+        file:
+            - File:
+                maxSize: 6000000

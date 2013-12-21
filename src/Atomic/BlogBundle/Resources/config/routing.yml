@@ -1,0 +1,65 @@
+AtomicBlogBundle_homepage:
+    pattern:  /
+    defaults: { _controller: AtomicBlogBundle:Page:index }
+    requirements:
+        _method:  GET
+        
+atomic_blog_page:
+    pattern:  /page/{page}
+    defaults: { _controller: AtomicBlogBundle:Page:page }
+    requirements:
+        _method:  GET       
+        
+atomic_blog_comment_page:
+    pattern:  /post/{id}/page/{page}
+    defaults: { _controller: AtomicBlogBundle:Blog:page }
+    requirements:
+        _method:  GET               
+        
+
+AtomicBlogBundle_blog_show:
+    pattern:  /post/{id}
+    defaults: { _controller: AtomicBlogBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+        
+        
+AtomicBlogBundle_blog_new:
+    pattern:  /newpost/
+    defaults: { _controller: AtomicBlogBundle:Blog:new }
+    requirements:
+        _method:  GET
+        id: \d+   
+        
+AtomicBlogBundle_blog_edit:
+    pattern:  /blog/edit/{blog_id}
+    defaults: { _controller: AtomicBlogBundle:Blog:edit }
+    requirements:
+        id: \d+            
+
+AtomicBlogBundle_blog_edit_save:
+    pattern:  /blog/saveedit/
+    defaults: { _controller: AtomicBlogBundle:Blog:editSave }
+    requirements:
+        _method:  POST      
+        
+AtomicBlogBundle_blog_create:
+    pattern:  /newpost/
+    defaults: { _controller: AtomicBlogBundle:Blog:create }
+    requirements:
+        _method:  POST
+
+AtomicBlogBundle_blog_delete:
+    pattern:  /delete/{blog_id}
+    defaults: { _controller: AtomicBlogBundle:Blog:delete }
+                 
+        
+AtomicBlogBundle_comment_create:
+    pattern: /view/comment/{blog_id}
+    defaults: { _controller: AtomicBlogBundle:Comment:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+
+        
+   
+        

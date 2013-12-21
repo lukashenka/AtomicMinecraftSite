@@ -1,0 +1,199 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+parameters:  
+    database_name_classic: classic1
+    database_name_hitech: hitech1
+    shop_id:       "89B5C58C-3559-47AD-06EC-40BD301E6EE3"
+    secret_key: "vyyZqRCvtU8RhGQt"
+    kurs_rts: 150
+    kurs_str_c: 1000
+    kurs_str_h: 1500
+    
+    players_data_dir: "players-data"
+    topcraft_secret_key: "dfaaf74ff9c135a61fc91f0600eb2d78"
+    bonus_coins_topcraft: 10
+
+    status_cost:
+      premium: 200
+      vip: 150
+
+    user_statuses:
+      premium: "Премиум - игрок"
+      vip: "Вип - игрок"
+
+framework:
+    #esi:             ~
+    translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    default_locale:  ru
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+    http_method_override: true
+    templating:    { engines: ['twig', 'php'] }
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection:   default
+        connections:
+           
+            default:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+            classic:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name_classic%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+                mapping_types:
+                        enum: string
+                        set: string
+                        varbinary: string
+                        tinyblob: text
+            hitech:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:    "%database_name_hitech%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8    
+                mapping_types:
+                        enum: string
+                        set: string
+                        varbinary: string
+                        tinyblob: text
+
+
+
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+       # auto_mapping: true
+        default_entity_manager:   default
+        entity_managers:
+            auto_mapping: true
+            default:
+                connection:        default
+                mappings:
+                       AtomicBlogBundle: ~
+                       AtomicUserBundle: ~
+                       AtomicMainMenuBundle: ~
+                       AtomicMapBundle: ~
+                       AtomicFastStartBundle: ~
+                       AtomicServerBundle: ~
+                       AtomicShopBundle: ~
+                       
+                       
+                       
+            classic:
+                
+                connection:       classic
+                mappings:
+                     
+                       AtomicShopBundle: ~
+            hitech:
+                connection:       hitech
+                mappings: 
+                    
+                      AtomicShopBundle: ~ 
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    username:  %mailer_user%
+    password:  %mailer_password%
+
+
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: Atomic\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
+ 
+    group:
+        group_class: Atomic\UserBundle\Entity\Group
+    profile:
+        form:
+            type: atomic_user_profile
+    registration:
+        confirmation:
+              enabled:    true
+              from_email:
+                address:        support@atomic.im
+                sender_name:    Atomic Registration
+    from_email:
+                address:        support@atomic.im
+                sender_name:    Atomic minecraft server         
+    resetting:
+        email:
+            from_email:
+                address:        support@atomic.im
+                sender_name:    Atomic minecraft server        
+        
+stfalcon_tinymce:
+        include_jquery: true
+        tinymce_jquery: true
+        selector: ".tinymce"
+        language: "ru"
+        theme:
+            simple:
+                theme: "modern"   
+                
+        external_plugins:
+            fullscreen:
+                url: "asset[bundles/stfalcontinymce/vendor/tinymce/plugins/fullscreen/plugin.min.js]"
+            image:
+                url: "asset[bundles/stfalcontinymce/vendor/tinymce/plugins/image/plugin.min.js]"
+            preview:
+                url: "asset[bundles/stfalcontinymce/vendor/tinymce/plugins/preview/plugin.min.js]"
+            media:
+                url: "asset[bundles/stfalcontinymce/vendor/tinymce/plugins/media/plugin.min.js]"    
+            code:
+                url: "asset[bundles/stfalcontinymce/vendor/tinymce/plugins/code/plugin.min.js]"  
+            filemanager:
+                url: "/js/tinymce/plugins/filemanager/plugin.min.js"   
+liip_imagine:
+    filter_sets:
+        blog_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [150, 150], mode: outbound }
+                
+
