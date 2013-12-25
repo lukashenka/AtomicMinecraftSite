@@ -30,3 +30,4 @@ web/socket/*
 !/web/bundles/atomicapi/
 !/web/bundles/atomicmap/
 !/web/bundles/framework/
+!/app/bootstrap.php.cache
