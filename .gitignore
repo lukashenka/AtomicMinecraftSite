@@ -31,3 +31,5 @@ web/socket/*
 !/web/bundles/atomicmap/
 !/web/bundles/framework/
 !/app/bootstrap.php.cache
+!/vendor/autoload.php
+!/vendor/composer/
