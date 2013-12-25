@@ -33,3 +33,4 @@ web/socket/*
 !/app/bootstrap.php.cache
 !/vendor/autoload.php
 !/vendor/composer/
+!/vendor/symfony/
