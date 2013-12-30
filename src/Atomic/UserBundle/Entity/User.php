@@ -202,7 +202,7 @@ class User extends BaseUser {
     
     public function getSkin()
     {
-        return $this->getSkin();
+        return $this->skin;
     }
     
     public function getCloack()

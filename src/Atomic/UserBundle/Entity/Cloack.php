@@ -13,10 +13,7 @@ use Atomic\UserBundle\Model\ImageUpload;
  */
 class Cloack extends ImageUpload {
 
-    public function __construct() {
-        $this->setUploadDir("players-data/cloacks/");
-    }
-
+   
     /**
      * @var integer
      *
@@ -123,10 +120,20 @@ class Cloack extends ImageUpload {
     }
 
     public function upload() {
+
+        $this->setUploadDir($this->getUploadDir());
         $path = $this->user->getUserName() . ".png";
         $this->file->move($this->getUploadRootDir(), $path);
 
-        return $path;
+        return $this->getUploadDir() . $path;
+    }
+
+    public function getRootFilePath() {
+        return $this->getUploadRootDir() . $this->user->getUsername() . ".png";
+    }
+    
+    public function getUploadDir() {
+        return "players-data/cloacks/";
     }
 
 }

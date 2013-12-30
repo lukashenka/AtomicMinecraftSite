@@ -11,16 +11,7 @@
 
 
 {% endblock %}
-<script type="text/javascript">
-    $(document).load(function() {
-        
-        var container = document.getElementById('steve');
-        alert(container);
-        alert(1);
-        drawSteve(container, "{{user.username}}", "/{{skin.getUploadDir}}");
-    }
-    );
-    </script>
+
 
 <div class="blog-item">
 
@@ -28,5 +19,16 @@
     <h1>Поздравляем, {{user.username}}</h1>
     <p>Ваш скин успешно обновлен</p>
     <div id="steve"></div>
+    <p>Все еще старый скин? А нажмите ctrl+r :)</p>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var container = document.getElementById('steve');
+
+        drawSteve(container, "{{user.username}}", "/{{user.skin.uploadDir}}","/{{user.cloack.getUploadDir}}");
+    }
+    );
+    </script>
 {%endblock %}

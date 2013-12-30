@@ -12,14 +12,13 @@ use Atomic\UserBundle\Model\ImageUpload;
  * @ORM\Entity(repositoryClass="Atomic\UserBundle\Entity\SkinRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Skin extends ImageUpload{
+class Skin extends ImageUpload {
 
-    
     public function __construct() {
-        $this->setUploadDir("players-data/skins/");
+       
     }
 
-        /**
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -45,19 +44,15 @@ class Skin extends ImageUpload{
      * @var \DateTime
      *
      * @ORM\Column(name="uploaded", type="datetime")
-     */    
-    
-    
+     */
 
-        /**
+    /**
      * Get id
      *
      * @return integer 
      */
-    
     public function getId() {
         return $this->id;
-        
     }
 
     /**
@@ -122,19 +117,25 @@ class Skin extends ImageUpload{
     public function getUploaded() {
         return $this->uploaded;
     }
-    
-    public function getImage()
-    {
-        return $this->getUploadDir().$this->getPath();
+
+    public function getImage() {
+        return $this->getUploadDir() . $this->getPath();
+    }
+
+    public function upload() {
+        $this->setUploadDir($this->getUploadDir());
+        $path = $this->user->getUserName() . ".png";
+        $this->file->move($this->getUploadRootDir(), $path);
+
+        return $this->getUploadDir() . $path;
+    }
+
+    public function getRootFilePath() {
+        return $this->getUploadRootDir() . $this->user->getUsername() . ".png";
     }
     
-     public function upload()
-    {
-         $path = $this->user->getUserName().".png";
-         $this->file->move($this->getUploadRootDir(),$path);
-         
-         return $path;
-         
+    public function getUploadDir() {
+        return "players-data/skins/";
     }
 
 }

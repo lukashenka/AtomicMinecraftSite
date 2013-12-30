@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 abstract class ImageUpload {
 
     protected $file;
-    protected $uploadDir = '';
+   
     /**
      * Sets file.
      *
@@ -37,10 +37,7 @@ abstract class ImageUpload {
         return $_SERVER['DOCUMENT_ROOT'] . $this->getUploadDir();
     }
 
-    public function getUploadDir() {
-       
-        return $this->uploadDir;
-    }
+    abstract function getUploadDir();
     
     public function setUploadDir($uploadDir)
     {

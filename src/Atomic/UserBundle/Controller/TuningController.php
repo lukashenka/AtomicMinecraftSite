@@ -28,24 +28,26 @@ class TuningController extends Controller {
 
         $skin = $em->getRepository('AtomicUserBundle:Skin')->findOneByUser($user);
 
-        if (!$skin || !is_file($skin->getUploadRootDir() . $skin->getPath())) {
+        if (!$skin || !is_file($skin->getRootFilePath())) {
 
-            $this->setDefaultUserSkin($user);
+            $skin = $this->getDefaultUserSkin($user);
         }
-        
-        $cloack =  $em->getRepository('AtomicUserBundle:Cloack')->findOneByUser($user);
-        
-        if (!$cloack || !is_file($cloack->getUploadRootDir() . $cloack->getPath())) {
-           
-            $this->setDefaultUserCloack($user);
+
+
+        $cloack = $em->getRepository('AtomicUserBundle:Cloack')->findOneByUser($user);
+
+        if (!$cloack || !is_file($cloack->getRootFilePath())) {
+
+            $cloack = $this->getDefaultUserCloack($user);
         }
 
 
         return $this->render('AtomicUserBundle:Tuning:index.html.twig', array(
                     'form_skin' => $skinUploadForm->createView(),
                     'form_cloack' => $cloackUploadForm->createView(),
+                    'user' => $user,
                     'skin' => $skin,
-                    'user' => $user
+                    'cloack'=>$cloack
                         )
         );
     }
@@ -59,6 +61,8 @@ class TuningController extends Controller {
 
         if (!isset($skin))
             $skin = new Skin();
+
+
         $skin->setUploaded(new \DateTime());
 
         $form = $this->createForm(new SkinType($skin));
@@ -77,13 +81,12 @@ class TuningController extends Controller {
             $em->persist($skin);
             $em->flush();
 
-            $minecraftSkin = new MinecraftSkin($skin->getUploadRootDir() . $path, $user, $skin->getUploadRootDir());
+            $minecraftSkin = new MinecraftSkin($skin->getRootFilePath(), $user, $skin->getUploadRootDir());
 
             $minecraftSkin->minecraft_skin_to_part();
 
 
             return $this->render('AtomicUserBundle:Tuning:succes-upload.html.twig', array(
-                        'skin' => $skin,
                         'user' => $user
                             )
             );
@@ -97,18 +100,17 @@ class TuningController extends Controller {
             );
         }
     }
-    
-    public function uploadCloackAction(Request $request)
-    {
+
+    public function uploadCloackAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
         $cloack = $em->getRepository('AtomicUserBundle:Cloack')->findOneByUser($user);
 
-        if (!isset($cloack)){
+        if (!isset($cloack)) {
             $cloack = new Cloack();
-          
         }
+
         $cloack->setUploaded(new \DateTime());
 
         $form = $this->createForm(new CloackType($cloack));
@@ -116,6 +118,8 @@ class TuningController extends Controller {
 
 
         $cloack->setFile($form->getData()->getFile());
+
+
 
         $cloack->setUser($user);
 
@@ -127,11 +131,12 @@ class TuningController extends Controller {
             $em->persist($cloack);
             $em->flush();
 
-         
+            $minecraftCloack = new MinecraftCloack($cloack->getRootFilePath(), $user, $cloack->getUploadRootDir());
+            $minecraftCloack->savePartyCloack();
+
 
 
             return $this->render('AtomicUserBundle:Tuning:succes-upload.html.twig', array(
-                        'skin' => $user->getSkin(),
                         'user' => $user
                             )
             );
@@ -158,7 +163,7 @@ class TuningController extends Controller {
         return $user;
     }
 
-    private function setDefaultUserSkin($user) {
+    private function getDefaultUserSkin($user) {
         $em = $this->getDoctrine()->getManager();
         $skin = new Skin();
         $skin->setUser($user);
@@ -173,10 +178,11 @@ class TuningController extends Controller {
         $minecraftSkin = new MinecraftSkin($skin->getUploadRootDir() . $user->getUsername() . ".png", $user, $skin->getUploadRootDir());
 
         $minecraftSkin->minecraft_skin_to_part();
+
+        return $skin;
     }
-    
-    private function setDefaultUserCloack($user)
-    {
+
+    private function getDefaultUserCloack($user) {
         $em = $this->getDoctrine()->getManager();
         $cloack = new Cloack();
         $cloack->setUser($user);
@@ -188,10 +194,11 @@ class TuningController extends Controller {
         $cloack->setUploaded(new \DateTime());
         $em->persist($cloack);
         $em->flush();
-        
-        $minecraftCloack = new MinecraftCloack($cloack->getUploadRootDir(). $user->getUsername() . ".png", $user,$cloack->getUploadRootDir());
+
+        $minecraftCloack = new MinecraftCloack($cloack->getUploadRootDir() . $user->getUsername() . ".png", $user, $cloack->getUploadRootDir());
         $minecraftCloack->savePartyCloack();
-        
+
+        return $cloack;
     }
 
 }

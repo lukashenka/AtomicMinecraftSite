@@ -1,12 +1,12 @@
 
-function drawSteve(container, username, skinDir, cloakDir)
+function drawSteve(container, username, skinDir, cloackDir)
 {
     var info;
     var camera, scene, renderer;
     var xvar = 0;
-    var targetRotationX = 0;
+    var targetRotationX = -0.5;
     var targetRotationXOnMouseDown = 0;
-    var targetRotationY = 0;
+    var targetRotationY = 0.5;
     var targetRotationYOnMouseDown = 0;
     var mouseX = 0;
     var mouseXOnMouseDown = 0;
@@ -141,6 +141,25 @@ function drawSteve(container, username, skinDir, cloakDir)
         head.overdraw = true;
         scene.addObject(head);
 
+
+        //CLOACK
+        var cloack_materials = [];
+        cloack_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('' + cloackDir + username + '/party-cloack.png')})]);
+        cloack_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('' + cloackDir + username + '/party-cloack.png')})]);
+        cloack_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('' + cloackDir + username + '/party-cloack.png')})]);
+        cloack_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('' + cloackDir + username + '/party-cloack.png')})]);
+        cloack_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('' + cloackDir + username + '/party-cloack.png')})]);
+        cloack_materials.push([new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('' + cloackDir + username + '/party-cloack.png')})]);
+
+        cloack = new THREE.Mesh(new THREE.CubeGeometry(8, 16, 1, 0, 0, 0, cloack_materials), new THREE.MeshFaceMaterial());
+        cloack.position.x = 0;
+        cloack.position.y = -12;
+        cloack.position.z = 3;
+        cloack.overdraw = true;
+        scene.addObject(cloack);
+
+
+
         renderer = new THREE.CanvasRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -210,22 +229,44 @@ function drawSteve(container, username, skinDir, cloakDir)
         camera.position.z = 0 - 100 * Math.cos(targetRotationX);
 
         xvar += Math.PI / 180
+        
+        
+        //head and hat swing
+        head.rotation.x = -Math.abs(Math.cos(xvar)/3);      
+        head.position.z = (-1 - 6 * Math.sin(head.rotation.x)/3);
+        head.position.y = (2 - 6 * (Math.cos(head.rotation.x))/3);
+        
+        hat.rotation.x = -Math.abs(Math.cos(xvar)/3);      
+        hat.position.z = (-1 - 6 * Math.sin(hat.rotation.x)/3);
+        hat.position.y = (2 - 6 * (Math.cos(hat.rotation.x))/3);
+
+        //cloack swing
+        cloack.rotation.x = -Math.abs(Math.cos(xvar));
+      
+        cloack.position.z = (3 - 6 * Math.sin(cloack.rotation.x));
+        cloack.position.y = (-6 - 6 * Math.abs(Math.cos(cloack.rotation.x)));
+    
 
         //Leg Swing
         leg_left.rotation.x = Math.cos(xvar);
         leg_left.position.z = 0 - 6 * Math.sin(leg_left.rotation.x);
         leg_left.position.y = -16 - 6 * Math.abs(Math.cos(leg_left.rotation.x));
+        
         leg_right.rotation.x = Math.cos(xvar + (Math.PI));
         leg_right.position.z = 0 - 6 * Math.sin(leg_right.rotation.x);
         leg_right.position.y = -16 - 6 * Math.abs(Math.cos(leg_right.rotation.x));
 
         //Arm Swing
+        
         arm_left.rotation.x = Math.cos(xvar + (Math.PI));
         arm_left.position.z = 0 - 6 * Math.sin(arm_left.rotation.x);
         arm_left.position.y = -4 - 6 * Math.abs(Math.cos(arm_left.rotation.x));
-        arm_right.rotation.x = Math.cos(xvar);
+        
+        
+        arm_right.rotation.x = 2.1+ Math.abs(Math.cos(xvar)/4);
+       
         arm_right.position.z = 0 - 6 * Math.sin(arm_right.rotation.x);
-        arm_right.position.y = -4 - 6 * Math.abs(Math.cos(arm_right.rotation.x));
+        arm_right.position.y = 2 - 6 * Math.abs(Math.cos(arm_right.rotation.x));
 
         renderer.render(scene, camera);
     }

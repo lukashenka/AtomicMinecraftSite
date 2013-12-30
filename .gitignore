@@ -53,3 +53,4 @@ web/socket/*
 !/vendor/twig/
 !/web/players-data/default-skin.png
 !/web/players-data/default-cloack.png
+!/web/players-data/cloacks/

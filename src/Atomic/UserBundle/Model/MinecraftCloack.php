@@ -32,11 +32,19 @@ class MinecraftCloack {
         }
 
         $original = imagecreatefrompng($this->image);
-      
-        $dest = imagecreatetruecolor(22, 17);
+
+        //DELETE OLD CLOACK
+        $fileCloack = $this->partyDir . "/" . $this->partyImageName;
+        if (file_exists($fileCloack)) {
+            $originalFile = file($fileCloack);
+            if ($originalFile)
+                unset($originalFile);
+        }
+        $dest = imagecreatetruecolor(17, 22);
 
         imagecopy($dest, $original, 0, 0, 0, 0, 22, 17);
-        imagepng($dest, $this->partyDir . "/" . $this->partyImageName);
+        imagerotate($dest, 90, 0);
+        imagepng($dest, $fileCloack);
         imagedestroy($original);
         imagedestroy($dest);
     }

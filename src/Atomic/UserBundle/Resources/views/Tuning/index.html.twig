@@ -1,7 +1,7 @@
 {% extends 'AtomicBlogBundle::layout.html.twig' %}
 
 
-{% block content %}
+
  {% block js_additional  %}
 <script src="/js/jquery.min.js"></script>
 <script src="/lib/minecraft/Three.js"></script>
@@ -10,9 +10,11 @@
 {% javascripts '@AtomicUserBundle/Resources/public/js/*' %}
 <script type="text/javascript" src="{{ asset_url }}""></script>
 {% endjavascripts %}
-
-
 {% endblock %}
+
+{% block content %}
+
+
 
 
 <div class="blog-item">
@@ -20,6 +22,7 @@
     <div id="steve"></div>
 
 </div>
+
 <div class="blog-item">
 
     <h3>Изменить скин</h3>
@@ -34,9 +37,10 @@
         {{ form_end(form_skin) }}
         </form>
     </div>
+
     <div class="blog-item">
         <h3>Изменить плащ</h3>
-        <form action="{{ path('atomic_tuning_uploadskin') }}" {{ form_enctype(form_skin) }} method="POST">
+        <form action="{{ path('atomic_tuning_uploadcloack') }}" {{ form_enctype(form_skin) }} method="POST">
          {{ form_start(form_cloack) }}
          {{ form_errors(form_cloack) }}
          {{ form_row(form_cloack.file, { 'attr': {'class': 'form-control'} }) }}
@@ -52,7 +56,7 @@
             $(document).ready(function() {
 
 
-                drawSteve(document.getElementById('steve'), "{{user.username}}", "/{{skin.getUploadDir}}");
+                drawSteve(document.getElementById('steve'), "{{user.username}}", "/{{skin.getUploadDir}}", "/{{cloack.getUploadDir}}");
             }
             );
             </script>
