@@ -22,4 +22,6 @@ atomic_tuning:
 atomic_tuning_uploadskin:    
     pattern:  /tuning/uploadskin
     defaults: { _controller: AtomicUserBundle:Tuning:uploadSkin }     
+    requirements:
+        _method:  POST   
   

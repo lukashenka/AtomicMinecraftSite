@@ -1,0 +1,16 @@
+{% extends 'AtomicBlogBundle::layout.html.twig' %}
+{% block content %}
+
+<div class="blog-item">
+
+
+    <h1>Упс</h1>
+    <p>При загрузке скина возникли ошибки:
+      
+ {% for error in errors%}
+        <p class="error">{{error.message}}</p>
+        {%endfor%}
+    </p>
+    <div id="steve"></div>
+</div>
+{%endblock %}

@@ -9,15 +9,23 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/style.css">
-{% javascripts  %}
+        {% block stylesheets %}
 
+        <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/layout.css">
+        <link rel="stylesheet" href="/css/style.css">
+         {% endblock stylesheets %} 
+
+         {% block stylesheets_additional %}
+         {% endblock stylesheets_additional %} 
+
+        {% javascripts  %}
         <script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+        {% endjavascripts %}
 
-{% endjavascripts %}
+        {% block js_additional  %}
+        {% endblock js_additional %}
 
 
 
@@ -31,13 +39,13 @@
                 <div id="header">
 
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
+                            
                             <div id="header-left" >
                                {% render controller('AtomicUserBundle:Security:renderLogin') %}
                                 </div>
-                            </div>
 
-                            <div class="col-lg-4">
+
                                 <div id="logo">
                                     <img src="/img/atomic-logo.png" alt="Atomic minecraft server"/>
                                 </div>
@@ -86,28 +94,29 @@
 
                                         <div id="monitor" class="blog-item">
                                             <h4>Мониторинг</h4>
+                                            {#
                                     {% render controller('AtomicServerBundle:Check:check') %} 
                                             <div id="vote" style="font-size: 12px;text-align: center;">Голосуй - не голосуй, все равно получишь ШиШ* 
 
                                                 <a href="http://mc-top.org/project/214/view"><img src="http://mc-top.org/banner/214.png?type=2"></a>
                                                 <a href="http://topcraft.ru/servers/1566"><img src="http://topcraft.ru/ban_img/1566"></a>
                                                 <!--      <a href="http://www.leagueofgames.org/projects/139"><img src="http://www.leagueofgames.org/img/log_banner.png" width="88" height="31" alt="LoG" /></a> -->
-
-                                            </div>
-                                            <p  style="font-size: 10px;text-align: center;">  *ШиШ - игровая валюта </p>
+                                                    #}
                                         </div>
+                                        <p  style="font-size: 10px;text-align: center;">  *ШиШ - игровая валюта </p>
+                                    </div>
 
-                                        <div id="last-users" class="blog-item">
-                                          <h4>Новое пополнение</h4>
-                                         <!--     <p>Адрес сервера - atomic.im</p>
-                                            <p><a href="http://www.teamspeak.com/?page=downloads" target="_blank">Скачать teamspeak</a></p>
-                                            <iframe width="280" height="200" src="//www.youtube.com/embed/QjJW3djOoEU" frameborder="0" allowfullscreen></iframe> -->
+                                    <div id="last-users" class="blog-item">
+                                        <h4>Новое пополнение</h4>
+                                        <!--     <p>Адрес сервера - atomic.im</p>
+                                           <p><a href="http://www.teamspeak.com/?page=downloads" target="_blank">Скачать teamspeak</a></p>
+                                           <iframe width="280" height="200" src="//www.youtube.com/embed/QjJW3djOoEU" frameborder="0" allowfullscreen></iframe> -->
                                     {% render controller('AtomicUserBundle:Users:lastUser') %} 
-                                        </div>
-
+                                    </div>
+                                           {#
                                         <div id="vk" class="blog-item">
                                             <script type="text/javascript" src="//vk.com/js/api/openapi.js?104"></script>
-
+                                                
                                             <!-- VK Widget -->
                                             <div id="vk_groups"></div>
                                             <script type="text/javascript">
@@ -115,101 +124,102 @@
                                                 </script>
                                             </div>
                                         </div>
+                                        #}
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+                        <footer>
+
+                            <div id="footer">
+
+                                <div class="left-column">
+                                    <div class="item">
+                                        <!-- begin WebMoney Transfer : accept label -->
+                                        <a href="http://www.megastock.ru/" target="_blank"><img src="/img/acc_white_on_transp_ru.png" alt="www.megastock.ru" border="0"></a>
+                                    </div>
+
+                                    <div class="item">
+                                        <!-- begin WebMoney Transfer : attestation label -->
+                                        <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=224394073004" target="_blank"><img src="/img/v_white_on_transp_ru.png" alt="Здесь находится аттестат нашего WM идентификатора 224394073004" border="0" /></a>
+                                        <!-- end WebMoney Transfer : attestation label -->
 
                                     </div>
+                                    <div class="item"><a href="http://interkassa.com/" target="_blank">
+                                            <img src="/img/ik_88x31_01.gif" title="Платежная система обслуживается компанией INTERKASSA" border="0">
+                                        </a>
+                                    </div>
+
+                                    <div class="item">
+                                        <!-- Yandex.Metrika counter -->
+                                        <script type="text/javascript">
+                                            (function(d, w, c) {
+                                                (w[c] = w[c] || []).push(function() {
+                                                    try {
+                                                        w.yaCounter22651156 = new Ya.Metrika({id: 22651156,
+                                                            webvisor: true,
+                                                            clickmap: true,
+                                                            trackLinks: true,
+                                                            accurateTrackBounce: true});
+                                                    } catch (e) {
+                                                    }
+                                                });
+
+                                                var n = d.getElementsByTagName("script")[0],
+                                                        s = d.createElement("script"),
+                                                        f = function() {
+                                                    n.parentNode.insertBefore(s, n);
+                                                };
+                                                s.type = "text/javascript";
+                                                s.async = true;
+                                                s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                                                if (w.opera == "[object Opera]") {
+                                                    d.addEventListener("DOMContentLoaded", f, false);
+                                                } else {
+                                                    f();
+                                                }
+                                            })(document, window, "yandex_metrika_callbacks");
+                                            </script>
+                                            <noscript><div><img src="//mc.yandex.ru/watch/22651156" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+                                            <!-- /Yandex.Metrika counter -->
+                                        </div>
+
+                                    </div>
+                                    <!-- end WebMoney Transfer : accept label -->
+                                    <p>&copy; Atomic Minecraft Server 2013</p>
+                                    <address>
+                                        <p> Связаться с нами:    
+                                            <a href="mailto:support@atomic.im">support@atomic.im</a></p>
+                                    </address>
                                 </div>
 
-                            </div>
+                            </footer>
+                        </div>
+                        <script>
+                            (function(i, s, o, g, r, a, m) {
+                                i['GoogleAnalyticsObject'] = r;
+                                i[r] = i[r] || function() {
+                                    (i[r].q = i[r].q || []).push(arguments)
+                                }, i[r].l = 1 * new Date();
+                                a = s.createElement(o),
+                                        m = s.getElementsByTagName(o)[0];
+                                a.async = 1;
+                                a.src = g;
+                                m.parentNode.insertBefore(a, m)
+                            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
+                            ga('create', 'UA-45016713-1', 'atomic.im');
+                            ga('send', 'pageview');
 
-
-
-
-
-
-                            <footer>
-
-                                <div id="footer">
-
-                                    <div class="left-column">
-                                        <div class="item">
-                                            <!-- begin WebMoney Transfer : accept label -->
-                                            <a href="http://www.megastock.ru/" target="_blank"><img src="/img/acc_white_on_transp_ru.png" alt="www.megastock.ru" border="0"></a>
-                                        </div>
-
-                                        <div class="item">
-                                            <!-- begin WebMoney Transfer : attestation label -->
-                                            <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=224394073004" target="_blank"><img src="/img/v_white_on_transp_ru.png" alt="Здесь находится аттестат нашего WM идентификатора 224394073004" border="0" /></a>
-                                            <!-- end WebMoney Transfer : attestation label -->
-
-                                        </div>
-                                        <div class="item"><a href="http://interkassa.com/" target="_blank">
-                                                <img src="/img/ik_88x31_01.gif" title="Платежная система обслуживается компанией INTERKASSA" border="0">
-                                            </a>
-                                        </div>
-
-                                        <div class="item">
-                                            <!-- Yandex.Metrika counter -->
-                                            <script type="text/javascript">
-                                                (function(d, w, c) {
-                                                    (w[c] = w[c] || []).push(function() {
-                                                        try {
-                                                            w.yaCounter22651156 = new Ya.Metrika({id: 22651156,
-                                                                webvisor: true,
-                                                                clickmap: true,
-                                                                trackLinks: true,
-                                                                accurateTrackBounce: true});
-                                                        } catch (e) {
-                                                        }
-                                                    });
-
-                                                    var n = d.getElementsByTagName("script")[0],
-                                                            s = d.createElement("script"),
-                                                            f = function() {
-                                                        n.parentNode.insertBefore(s, n);
-                                                    };
-                                                    s.type = "text/javascript";
-                                                    s.async = true;
-                                                    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-                                                    if (w.opera == "[object Opera]") {
-                                                        d.addEventListener("DOMContentLoaded", f, false);
-                                                    } else {
-                                                        f();
-                                                    }
-                                                })(document, window, "yandex_metrika_callbacks");
-                                                </script>
-                                                <noscript><div><img src="//mc.yandex.ru/watch/22651156" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-                                                <!-- /Yandex.Metrika counter -->
-                                            </div>
-
-                                        </div>
-                                        <!-- end WebMoney Transfer : accept label -->
-                                        <p>&copy; Atomic Minecraft Server 2013</p>
-                                        <address>
-                                            <p> Связаться с нами:    
-                                                <a href="mailto:support@atomic.im">support@atomic.im</a></p>
-                                        </address>
-                                    </div>
-
-                                </footer>
-                            </div>
-                            <script>
-                                (function(i, s, o, g, r, a, m) {
-                                    i['GoogleAnalyticsObject'] = r;
-                                    i[r] = i[r] || function() {
-                                        (i[r].q = i[r].q || []).push(arguments)
-                                    }, i[r].l = 1 * new Date();
-                                    a = s.createElement(o),
-                                            m = s.getElementsByTagName(o)[0];
-                                    a.async = 1;
-                                    a.src = g;
-                                    m.parentNode.insertBefore(a, m)
-                                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-                                ga('create', 'UA-45016713-1', 'atomic.im');
-                                ga('send', 'pageview');
-
-                                </script>
-                            </body>
-                        </html>
+                            </script>
+                        </body>
+                    </html>

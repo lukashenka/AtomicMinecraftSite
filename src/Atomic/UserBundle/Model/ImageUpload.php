@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 abstract class ImageUpload {
 
     protected $file;
-    protected $uploadDir = '/shop/upload/skins/';
+    protected $uploadDir = '';
     /**
      * Sets file.
      *

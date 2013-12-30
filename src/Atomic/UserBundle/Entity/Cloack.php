@@ -11,8 +11,12 @@ use Atomic\UserBundle\Model\ImageUpload;
  * @ORM\Table(name="atomic_cloak")
  * @ORM\Entity(repositoryClass="Atomic\UserBundle\Entity\CloackRepository")
  */
-class Cloack extends ImageUpload
-{
+class Cloack extends ImageUpload {
+
+    public function __construct() {
+        $this->setUploadDir("players-data/cloacks/");
+    }
+
     /**
      * @var integer
      *
@@ -42,14 +46,12 @@ class Cloack extends ImageUpload
      */
     private $uploaded;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,10 +61,9 @@ class Cloack extends ImageUpload
      * @param \stdClass $user
      * @return Cloack
      */
-    public function setUser($user)
-    {
+    public function setUser($user) {
         $this->user = $user;
-    
+
         return $this;
     }
 
@@ -71,8 +72,7 @@ class Cloack extends ImageUpload
      *
      * @return \stdClass 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
 
@@ -82,10 +82,9 @@ class Cloack extends ImageUpload
      * @param string $path
      * @return Cloack
      */
-    public function setPath($path)
-    {
+    public function setPath($path) {
         $this->path = $path;
-    
+
         return $this;
     }
 
@@ -94,8 +93,7 @@ class Cloack extends ImageUpload
      *
      * @return string 
      */
-    public function getPath()
-    {
+    public function getPath() {
         return $this->path;
     }
 
@@ -105,10 +103,9 @@ class Cloack extends ImageUpload
      * @param \DateTime $uploaded
      * @return Cloack
      */
-    public function setUploaded($uploaded)
-    {
+    public function setUploaded($uploaded) {
         $this->uploaded = $uploaded;
-       
+
         return $this;
     }
 
@@ -117,8 +114,19 @@ class Cloack extends ImageUpload
      *
      * @return \DateTime 
      */
-    public function getUploaded()
-    {
+    public function getUploaded() {
         return $this->uploaded;
     }
+
+    public function getImage() {
+        return $this->getUploadDir() . $this->getPath();
+    }
+
+    public function upload() {
+        $path = $this->user->getUserName() . ".png";
+        $this->file->move($this->getUploadRootDir(), $path);
+
+        return $path;
+    }
+
 }

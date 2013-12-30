@@ -14,6 +14,9 @@ parameters:
     players_data_dir: "players-data"
     topcraft_secret_key: "dfaaf74ff9c135a61fc91f0600eb2d78"
     bonus_coins_topcraft: 10
+    
+    skin_upload_dir: "players-data/skins/"
+    cloacks_upload_dir: "players-data/skins/"
 
     status_cost:
       premium: 200

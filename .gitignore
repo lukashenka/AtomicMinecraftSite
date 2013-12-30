@@ -51,3 +51,5 @@ web/socket/*
 !/vendor/doctrine/
 !/vendor/willdurand/
 !/vendor/twig/
+!/web/players-data/default-skin.png
+!/web/players-data/default-cloack.png

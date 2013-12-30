@@ -14,7 +14,12 @@ use Atomic\UserBundle\Model\ImageUpload;
  */
 class Skin extends ImageUpload{
 
-    /**
+    
+    public function __construct() {
+        $this->setUploadDir("players-data/skins/");
+    }
+
+        /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -40,10 +45,7 @@ class Skin extends ImageUpload{
      * @var \DateTime
      *
      * @ORM\Column(name="uploaded", type="datetime")
-     */
-
-    
-    
+     */    
     
     
 

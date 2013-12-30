@@ -8,14 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SkinType extends AbstractType {
 
-    
-    
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-              
-                ->add('user','hidden')
-                ->add('file')
-               
+                ->add('user', 'hidden')
+                ->add('file', 'file', array(
+                    'required' => true,
+                    'label' => 'Загрузить файл'))
+
         //  ->add('user')
         ;
     }
@@ -35,7 +34,5 @@ class SkinType extends AbstractType {
     public function getName() {
         return 'atomic_userbundle_skin';
     }
-    
-    
 
 }

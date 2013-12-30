@@ -15,4 +15,34 @@ Atomic\UserBundle\Entity\Skin:
     properties:
         file:
             - File:
-                maxSize: 6000000
+                maxSize: 1000k
+                maxSizeMessage: "Слишком большой размер файла"
+                mimeTypes: [image/png]
+                mimeTypesMessage: "Это точно png?"
+            - Image:
+                minWidth: 64
+                maxWidth: 64
+                minHeight: 32
+                maxHeight: 32    
+                minWidthMessage: "Размер изображения должен быть 64х32 пикселей"
+                minHeightMessage: "Размер изображения должен быть 64х32 пикселей"
+                maxHeightMessage: "Размер изображения должен быть 64х32 пикселей"
+                maxWidthMessage: "Размер изображения должен быть 64х32 пикселей"
+                
+Atomic\UserBundle\Entity\Cloak:
+    properties:
+        file:
+            - File:
+                maxSize: 1000k
+                maxSizeMessage: "Слишком большой размер файла"
+                mimeTypes: [image/png]
+                mimeTypesMessage: "Это точно png?"
+            - Image:
+                minWidth: 64
+                maxWidth: 64
+                minHeight: 32
+                maxHeight: 32    
+                minWidthMessage: "Размер изображения должен быть 64х32 пикселей"
+                minHeightMessage: "Размер изображения должен быть 64х32 пикселей"
+                maxHeightMessage: "Размер изображения должен быть 64х32 пикселей"
+                maxWidthMessage: "Размер изображения должен быть 64х32 пикселей"
