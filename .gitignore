@@ -33,7 +33,7 @@ web/socket/*
 /cache/*
 /web/players-data/skins/
 /web/players-data/cloacks/
-/web/players-data/
 !/web/players-data/default-cloack.png
 !/web/players-data/default-skin.png
 !/web/players-data/default/
+/web/players-data/Admin.png
