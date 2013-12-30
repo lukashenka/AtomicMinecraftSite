@@ -167,7 +167,7 @@ class TuningController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $skin = new Skin();
         $skin->setUser($user);
-        $defaultSkin = $skin->getUploadRootDir() . "../default-skin.png";
+        $defaultSkin = $skin->getUploadRootDir() . "../default/default-skin.png";
         $path = $skin->getUploadRootDir() . $user->getUsername() . ".png";
         copy($defaultSkin, $path);
         $path = $skin->getUploadDir() . $user->getUsername() . ".png";
@@ -186,7 +186,7 @@ class TuningController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $cloack = new Cloack();
         $cloack->setUser($user);
-        $defaultSkin = $cloack->getUploadRootDir() . "../default-cloack.png";
+        $defaultSkin = $cloack->getUploadRootDir() . "../default/default-cloack.png";
         $path = $cloack->getUploadRootDir() . $user->getUsername() . ".png";
         copy($defaultSkin, $path);
         $path = $cloack->getUploadDir() . $user->getUsername() . ".png";

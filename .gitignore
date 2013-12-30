@@ -21,7 +21,6 @@ web/shop/cache/*
 web/socket/client/*
 web/socket/launcher/*
 web/socket/*
-/web/players-data/
 !/web/bundles/atomicshop/
 !/web/bundles/stfalcontinymce/
 !/web/bundles/acmedemo/
@@ -31,7 +30,10 @@ web/socket/*
 !/web/bundles/atomicmap/
 !/web/bundles/framework/
 !/app/bootstrap.php.cache
-!/web/players-data/default-skin.png
-!/web/players-data/default-cloack.png
-!/web/players-data/cloacks/
 /cache/*
+/web/players-data/skins/
+/web/players-data/cloacks/
+/web/players-data/
+!/web/players-data/default-cloack.png
+!/web/players-data/default-skin.png
+!/web/players-data/default/
