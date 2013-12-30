@@ -54,3 +54,4 @@ web/socket/*
 !/web/players-data/default-skin.png
 !/web/players-data/default-cloack.png
 !/web/players-data/cloacks/
+/cache/
