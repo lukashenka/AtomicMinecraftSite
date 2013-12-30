@@ -34,7 +34,7 @@ abstract class ImageUpload {
 
     public function getUploadRootDir() {
         
-        return $_SERVER['DOCUMENT_ROOT'] . $this->getUploadDir();
+        return $_SERVER['DOCUMENT_ROOT'] ."/". $this->getUploadDir();
     }
 
     abstract function getUploadDir();
