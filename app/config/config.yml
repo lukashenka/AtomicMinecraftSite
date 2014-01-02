@@ -16,7 +16,7 @@ parameters:
     bonus_coins_topcraft: 10
     
     skin_upload_dir: "players-data/skins/"
-    cloacks_upload_dir: "players-data/skins/"
+    cloack_upload_dir: "players-data/cloacks/"
 
     status_cost:
       premium: 200

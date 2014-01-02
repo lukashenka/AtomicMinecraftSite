@@ -29,7 +29,7 @@ class Skin extends ImageUpload {
 
     /**
      * @ORM\ManyToOne(targetEntity="Atomic\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id",unique=true, referencedColumnName="id")
      */
     private $user;
 
@@ -136,6 +136,11 @@ class Skin extends ImageUpload {
     
     public function getUploadDir() {
         return "players-data/skins/";
+    }
+    
+    public function isSkinSetted()
+    {
+        return file_exists($this->getRootFilePath());
     }
 
 }

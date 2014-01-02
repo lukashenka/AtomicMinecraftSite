@@ -25,7 +25,7 @@ class Cloack extends ImageUpload {
 
     /**
      * @ORM\ManyToOne(targetEntity="Atomic\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id",unique=true, referencedColumnName="id")
      */
     private $user;
 
@@ -134,6 +134,11 @@ class Cloack extends ImageUpload {
     
     public function getUploadDir() {
         return "players-data/cloacks/";
+    }
+    
+     public function isCloackSetted()
+    {
+        return file_exists($this->getRootFilePath());
     }
 
 }

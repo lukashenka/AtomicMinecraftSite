@@ -4,7 +4,7 @@
     </div>
 {%for user in users %}
 
-    <div class="new-user">{{user.getUsername}}</div>
+    <div class="new-user"><a href="{{path("atomic_user_show", { 'name': user.username })}}">{{user.username}}</a></div>
 
 {%endfor%}
 

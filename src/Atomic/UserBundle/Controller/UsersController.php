@@ -4,17 +4,79 @@ namespace Atomic\UserBundle\Controller;
 
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Atomic\UserBundle\Entity\PermissionsInheritance;
+use Atomic\ShopBundle\Entity\Iconomy;
 
 class UsersController extends Controller {
 
-    public function showAction($id) {
+    public function showAction($name) {
+
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $emClassic = $this->get('doctrine')->getManager('classic');
+
+        $emHitech = $this->get('doctrine')->getManager('hitech');
+
+        $classicStatus = $emClassic->getRepository('AtomicShopBundle:Iconomy')->findOneByUsername($name);
+
+
+        if (!$classicStatus) {
+            $classicStatus = new Iconomy();
+            $classicStatus->setStatus(0);
+            $classicStatus->setBalance(0);
+            $classicStatus->setUsername($name);
+            $emClassic->persist($classicStatus);
+            $emClassic->flush();
+        }
+
+
+
+        $hitechStatus = $emHitech->getRepository('AtomicShopBundle:Iconomy')->findOneByUsername($name);
+
+        if (!$hitechStatus) {
+            $hitechStatus = new Iconomy();
+            $hitechStatus->setStatus(0);
+            $hitechStatus->setBalance(0);
+            $hitechStatus->setUsername($name);
+            $emHitech->persist($classicStatus);
+            $emHitech->flush();
+        }
+
+        $userCoins = array("classic" => $classicStatus->getbalance(),
+            "hitech" => $hitechStatus->getBalance());
+
         $user = $this->getDoctrine()
-                        ->getManager()->getRepository('AtomicUserBundle:User')->find($id);
+                        ->getManager()->getRepository('AtomicUserBundle:User')->findOneByUsername($name);
 
 
-        
+        if (!is_object($user)) {
+
+            throw $this->createNotFoundException("Unable to find User {$name}.");
+        }
+
+        $permission = $em->getRepository('AtomicUserBundle:PermissionsInheritance')->findOneByChild($user->getUsername());
+        if (is_object($permission)) {
+            
+        } else {
+            $permission = new PermissionsInheritance();
+            $permission->setParent('default');
+        }
+
+
+
+        $skin = $user->getSkin();
+
+        $cloack = $user->getCloack();
+
+
         return $this->render('AtomicUserBundle:User:show.html.twig', array(
-                    'user' => $user
+                    'user' => $user,
+                    'coins' => $userCoins,
+                    'permission' => $permission,
+                    'skin' => $skin,
+                    'cloack' => $cloack
         ));
     }
 

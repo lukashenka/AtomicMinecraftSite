@@ -3,3 +3,7 @@ atomic_api_topcraft_vote:
     defaults: { _controller: AtomicApiBundle:Topcraft:vote }
     requirements:
         _method:  POST    
+
+atomic_api_permissions_delete_expired:
+    pattern:  /permissions/delete-exprired
+    defaults: { _controller: AtomicApiBundle:Permissions:deleteExpired }

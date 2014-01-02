@@ -9,6 +9,8 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        
+        {# Main css #}
         {% block stylesheets %}
 
         <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -16,15 +18,20 @@
         <link rel="stylesheet" href="/css/style.css">
          {% endblock stylesheets %} 
 
+        
+        {# Additional css #}
          {% block stylesheets_additional %}
          {% endblock stylesheets_additional %} 
 
+        {# Main js scripts #}
         {% javascripts  %}
         <script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
         {% endjavascripts %}
 
+        {# Additional js scripts #}
         {% block js_additional  %}
+        
         {% endblock js_additional %}
 
 
@@ -94,7 +101,7 @@
 
                                         <div id="monitor" class="blog-item">
                                             <h4>Мониторинг</h4>
-
+{#
                                     {% render controller('AtomicServerBundle:Check:check') %} 
                                             <div id="vote" style="font-size: 12px;text-align: center;">Голосуй - не голосуй, все равно получишь ШиШ* 
 
@@ -105,7 +112,7 @@
                                             </div>
                                             <p  style="font-size: 10px;text-align: center;">  *ШиШ - игровая валюта </p>
                                         </div>
-
+#}
                                         <div id="last-users" class="blog-item">
                                             <h4>Новое пополнение</h4>
                                             <!--     <p>Адрес сервера - atomic.im</p>
@@ -115,7 +122,7 @@
                                         </div>
 
                                         <div id="vk" class="blog-item">
-                                            <script type="text/javascript" src="//vk.com/js/api/openapi.js?104"></script>
+{#                                            <script type="text/javascript" src="//vk.com/js/api/openapi.js?104"></script>
 
                                             <!-- VK Widget -->
                                             <div id="vk_groups"></div>
@@ -125,7 +132,7 @@
                                             </div>
                                         </div>
 
-
+#}
                                     </div>
                                 </div>
 
@@ -144,7 +151,7 @@
                                     <div class="left-column">
                                         <div class="item">
                                             <!-- begin WebMoney Transfer : accept label -->
-                                            <a href="http://www.megastock.ru/" target="_blank"><img src="/img/acc_white_on_transp_ru.png" alt="www.megastock.ru" border="0"></a>
+                                            <a href="http://www.megastock.ru/" target="_blank"><img src="/img/acc_white_on_transp_ru.png" alt="www.megastock.ru" border="0" ></a>
                                         </div>
 
                                         <div class="item">

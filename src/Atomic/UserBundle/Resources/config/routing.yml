@@ -7,7 +7,7 @@ atomic_user_profile:
     defaults: { _controller: AtomicUserBundle:Users:profile }    
     
 atomic_user_show:
-    pattern:  /user/show/{id}
+    pattern:  /user/show/{name}
     defaults: { _controller: AtomicUserBundle:Users:show }    
     
 atomic_change_status:
