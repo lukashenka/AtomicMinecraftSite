@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class UserRepository extends EntityRepository implements UserProviderInterface {
 
@@ -35,15 +36,15 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
     }
 
     public function getByUsernames($usernames) {
-       
-        
+
+
         $q = $this->createQueryBuilder('u')
                 ->andWhere("u.username  in (:usernames)")
                 ->setParameter('usernames', $usernames)
                 ->getQuery();
-      
+
         try {
-            
+
             $users = $q->getResult();
         } catch (NoResultException $e) {
             $message = sprintf(
@@ -92,8 +93,27 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
     public function supportsClass($class) {
         return $this->getEntityName() === $class || is_subclass_of($class, $this->getEntityName());
     }
-    
-    
-    
+
+    public function getPaginatorUsers() {
+
+        if (!isset($this->paginator)) {
+            $query = $this->createQueryBuilder('u')
+                    ->select('u');
+
+
+            $this->paginator = new Paginator($query, $fetchJoinCollection = true);
+        }
+        return $this->paginator;
+    }
+
+    public function getUsersPage($page, $limit = 5) {
+        $paginator = $this->getPaginatorUsers();
+        $paginator
+                ->getQuery()
+                ->setFirstResult($limit * ($page - 1))
+                ->setMaxResults($limit);
+
+        return $paginator;
+    }
 
 }

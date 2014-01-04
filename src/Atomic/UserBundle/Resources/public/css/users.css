@@ -1,0 +1,8 @@
+.user-block {
+width: 110px;
+float: left;
+height: 146px;
+background: white;
+margin: 10px;
+box-shadow: 1px 1px 1px rgb(223, 223, 223);
+}

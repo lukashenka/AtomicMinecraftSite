@@ -9,6 +9,8 @@ use Atomic\ShopBundle\Entity\Iconomy;
 
 class UsersController extends Controller {
 
+    private $itemsPerPage = 50;
+
     public function showAction($name) {
 
 
@@ -81,14 +83,37 @@ class UsersController extends Controller {
     }
 
     public function listAction() {
-        $users = $this->getDoctrine()
-                        ->getManager()->getRepository('AtomicUserBundle:User')->findAll();
+
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AtomicUserBundle:User')->getUsersPage(1, $this->itemsPerPage);
 
 
-
+        $countPages = ceil(count($users) / $this->itemsPerPage);
 
         return $this->render('AtomicUserBundle:Users:list.html.twig', array(
                     'users' => $users,
+                    'countPages' => $countPages,
+                    'currentPage' => 1
+        ));
+
+
+       
+    }
+    
+    
+    
+     public function pageAction($page = 1) {
+        $em = $this->getDoctrine()->getManager();
+      
+        $users = $em->getRepository('AtomicUserBundle:User')->getUsersPage($page, $this->itemsPerPage);
+
+        
+        $countPages = ceil(count($users) / $this->itemsPerPage);
+
+          return $this->render('AtomicUserBundle:Users:list.html.twig', array(
+                    'users' => $users,
+                    'countPages' => $countPages,
+                    'currentPage' => 1
         ));
     }
 

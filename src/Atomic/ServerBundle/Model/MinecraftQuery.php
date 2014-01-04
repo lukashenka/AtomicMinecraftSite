@@ -23,7 +23,7 @@ class MinecraftQuery {
     private $Players;
     private $Info;
 
-    public function Connect($Ip, $Port = 25565, $Timeout = 3) {
+    public function Connect($Ip, $Port = 25565, $Timeout = 1) {
         if (!is_int($Timeout) || $Timeout < 0) {
             throw new InvalidArgumentException('Timeout must be an integer.');
         }

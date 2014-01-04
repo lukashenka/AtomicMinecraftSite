@@ -2,6 +2,12 @@ atomic_user_list:
     pattern:  /users/
     defaults: { _controller: AtomicUserBundle:Users:list }
     
+atomic_user_list_page:
+    pattern:  /users/page/{page}
+    defaults: { _controller: AtomicUserBundle:Users:page }
+    requirements:
+        _method:  GET     
+    
 atomic_user_profile:
     pattern:  /profile
     defaults: { _controller: AtomicUserBundle:Users:profile }    
@@ -9,6 +15,8 @@ atomic_user_profile:
 atomic_user_show:
     pattern:  /user/show/{name}
     defaults: { _controller: AtomicUserBundle:Users:show }    
+    
+
     
 atomic_change_status:
     pattern:  /user/change-status/
@@ -30,4 +38,8 @@ atomic_tuning_uploadcloack:
     defaults: { _controller: AtomicUserBundle:Tuning:uploadCloack }     
     requirements:
         _method:  POST           
+
   
+atomic_user_test:
+    pattern:  /users/test
+    defaults: { _controller: AtomicUserBundle:Test:test }  

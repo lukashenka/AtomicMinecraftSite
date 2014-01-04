@@ -46,10 +46,10 @@
 
         <p>Последний раз заходил на сайт {{user.lastlogin|date('d-m-Y в h:m:s')}}</p>
         
-        <p>Игровой баланс:  {{user.coins}}</p>
+        <p>Игровой баланс:  {{user.coins}} рублей</p>
         
-        <p>Баланс шишей на Hitech сервере</p>
-        <p>Баланс шишей на Classic сервере</p>
+        <p>Имеет {{coins['hitech']}} шишей на Hitech сервере</p>
+        <p>Имеет {{coins['classic']}} шишей на Classic сервере</p>
          
 
     </div>

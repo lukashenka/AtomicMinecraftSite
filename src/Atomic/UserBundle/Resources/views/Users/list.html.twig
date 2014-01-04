@@ -1,10 +1,28 @@
 {% extends 'AtomicBlogBundle::layout.html.twig' %}
+
+ {% block stylesheets_additional  %}
+
+{% stylesheets '@AtomicUserBundle/Resources/public/css/*' %}
+  <link rel="stylesheet" href="{{ asset_url }}">
+{% endstylesheets %}
+  
+{% endblock stylesheets_additional %}
+
 {% block content %}
+<div class="blog-item">
   {% for user in users %}
-<a href="{{ path('atomic_user_show', { 'id': user.id }) }}">{{user.username}} </a>
 
+        <div class="user-block">
+            <a href="{{path("atomic_user_show", { 'name': user.username })}}">{{user.username}} </a>
+        </div>
     {% else %}
-<p>There are no blog entries for symblog</p>
+        <p>Чего? Нету пользователей? оО</p>
     {% endfor %}
+    </div>
+  <div class="clearfix clear"></div>
+    <div id="blog-pagination" class="pagination">
 
+            {% include 'AtomicUserBundle:Users:pagination.html.twig' with { 'items': users } %}
+    </div>
 {% endblock content %}
+

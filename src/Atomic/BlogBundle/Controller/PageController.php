@@ -5,7 +5,9 @@ namespace Atomic\BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PageController extends Controller {
+    
 private $itemsPerPage =4;
+
     public function indexAction() {
 
         $em = $this->getDoctrine()->getManager();
