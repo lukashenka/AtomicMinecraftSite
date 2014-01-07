@@ -6,3 +6,24 @@ background: white;
 margin: 10px;
 box-shadow: 1px 1px 1px rgb(223, 223, 223);
 }
+
+.user-block .username {
+text-align: center;
+padding: 2px;
+background: black;
+
+}
+
+.user-block .username a{
+color: white;
+
+}
+
+.user-block .user-isometric-image {
+padding: 8px;
+}
+.users-block{
+    
+    display: inline-block;
+    
+}

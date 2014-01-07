@@ -40,11 +40,14 @@ class Skin extends ImageUpload {
      */
     private $path;
 
+
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="uploaded", type="datetime")
+     * @ORM\Column(name="isometric_skin_path", type="string", length=255)
      */
+    private $isometricSkin;
+
 
     /**
      * Get id
@@ -141,6 +144,16 @@ class Skin extends ImageUpload {
     public function isSkinSetted()
     {
         return file_exists($this->getRootFilePath());
+    }
+    
+    public function setIsometricSkin($path)
+    {
+        $this->isometricSkin = $path;
+    }
+    
+    public function getIsometricSkin()
+    {
+        return$this->isometricSkin;
     }
 
 }

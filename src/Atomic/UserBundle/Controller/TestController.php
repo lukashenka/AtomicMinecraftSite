@@ -20,8 +20,10 @@ class TestController extends Controller
       
         
         $isometricSkin = new IsometricSkin($skin->getUploadRootDir().$user->getUsername());
-        $isometricImage = $isometricSkin->getIsometricSkin();
+        $isometricImage = $isometricSkin->createIsometricSkin(0.2);
         
         return $this->render('AtomicUserBundle:Test:index.html.twig');
     }
+    
+    
 }

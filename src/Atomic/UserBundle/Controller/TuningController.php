@@ -11,6 +11,7 @@ use Atomic\UserBundle\Entity\Cloack;
 use Atomic\UserBundle\Model\MinecraftSkin;
 use Atomic\UserBundle\Model\MinecraftCloack;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Atomic\UserBundle\Model\IsometricSkin;
 
 class TuningController extends Controller {
 
@@ -47,7 +48,7 @@ class TuningController extends Controller {
                     'form_cloack' => $cloackUploadForm->createView(),
                     'user' => $user,
                     'skin' => $skin,
-                    'cloack'=>$cloack
+                    'cloack' => $cloack
                         )
         );
     }
@@ -79,13 +80,16 @@ class TuningController extends Controller {
             $skin->setPath($path);
 
             $em->persist($skin);
-            $em->flush();
+
 
             $minecraftSkin = new MinecraftSkin($skin->getRootFilePath(), $user, $skin->getUploadRootDir());
 
             $minecraftSkin->minecraft_skin_to_part();
 
-
+            $isometricSkin = new IsometricSkin($skin->getUploadRootDir() . $user->getUsername());
+            $isometricSkin->createIsometricSkin();
+            $skin->setIsometricSkin($skin->getUploadDir() . $user->getUsername() . DIRECTORY_SEPARATOR . $isometricSkin->getCacheSkinImage());
+            $em->flush();
             return $this->render('AtomicUserBundle:Tuning:succes-upload.html.twig', array(
                         'user' => $user
                             )
@@ -173,11 +177,15 @@ class TuningController extends Controller {
         $path = $skin->getUploadDir() . $user->getUsername() . ".png";
         $skin->setPath($path);
         $em->persist($skin);
-        $em->flush();
 
         $minecraftSkin = new MinecraftSkin($skin->getUploadRootDir() . $user->getUsername() . ".png", $user, $skin->getUploadRootDir());
 
         $minecraftSkin->minecraft_skin_to_part();
+
+        $isometricSkin = new IsometricSkin($skin->getUploadRootDir() . $user->getUsername());
+        $isometricSkin->createIsometricSkin();
+        $skin->setIsometricSkin($skin->getUploadDir() . $user->getUsername() . DIRECTORY_SEPARATOR . $isometricSkin->getCacheSkinImage());
+        $em->flush();
 
         return $skin;
     }

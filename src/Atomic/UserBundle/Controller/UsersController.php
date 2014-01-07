@@ -113,7 +113,7 @@ class UsersController extends Controller {
           return $this->render('AtomicUserBundle:Users:list.html.twig', array(
                     'users' => $users,
                     'countPages' => $countPages,
-                    'currentPage' => 1
+                    'currentPage' => $page
         ));
     }
 

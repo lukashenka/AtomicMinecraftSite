@@ -1,10 +1,12 @@
 {% extends '::base.html.twig' %}
 
-
+{% block title %}
+Пользователь {{user.username}}
+{% endblock title %}
 
 
 {% block js_additional  %}
-{% if skin is not null %}
+
 <script src="/js/jquery.min.js"></script>
 <script src="/lib/minecraft/Three.js"></script>
 <script src="/lib/minecraft/RequestAnimationFrame.js"></script>
@@ -17,16 +19,19 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-
+        {% if skin is not null %}
         drawSteve(document.getElementById('steve'), "{{user.username}}", "/{{skin.getUploadDir}}", "/{{cloack.getUploadDir}}");
+        {%else %}
+        drawSteve(document.getElementById('steve'), "party-skin", "/players-data/default/", "");
+        {% endif %}
 
     }
     );
     </script>
 
 {% endjavascripts %}
-{% endif %}
-    
+
+
 {% endblock js_additional %}
 
 
@@ -45,12 +50,12 @@
 
 
         <p>Последний раз заходил на сайт {{user.lastlogin|date('d-m-Y в h:m:s')}}</p>
-        
+
         <p>Игровой баланс:  {{user.coins}} рублей</p>
-        
+
         <p>Имеет {{coins['hitech']}} шишей на Hitech сервере</p>
         <p>Имеет {{coins['classic']}} шишей на Classic сервере</p>
-         
+
 
     </div>
 {% endblock %}

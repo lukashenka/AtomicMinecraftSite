@@ -1,25 +1,41 @@
 {% extends 'AtomicBlogBundle::layout.html.twig' %}
+{% block title %}
+Игроки сервера Atomic
+{% endblock title %}
 
  {% block stylesheets_additional  %}
 
 {% stylesheets '@AtomicUserBundle/Resources/public/css/*' %}
-  <link rel="stylesheet" href="{{ asset_url }}">
+<link rel="stylesheet" href="{{ asset_url }}">
 {% endstylesheets %}
-  
+
 {% endblock stylesheets_additional %}
 
 {% block content %}
-<div class="blog-item">
+<div class="blog-item users-block">
+    <h1>Игроки сервера Atomic</h1>
   {% for user in users %}
 
         <div class="user-block">
-            <a href="{{path("atomic_user_show", { 'name': user.username })}}">{{user.username}} </a>
+            <div class="username"><a href="{{path("atomic_user_show", { 'name': user.username })}}">{{user.username}} </a></div>
+            <div class="user-isometric-image">
+
+            {% if user.skin is not null %}
+                <a href="{{path("atomic_user_show", { 'name': user.username })}}">
+                <img src="/{{user.skin.isometricSkin}}" width="80"/>
+                </a>
+                {% else %}
+                <a href="{{path("atomic_user_show", { 'name': user.username })}}">
+                <img src="/players-data/default/isometric.png" width="80"/>
+                </a>
+                {% endif %}
+            </div>
         </div>
     {% else %}
         <p>Чего? Нету пользователей? оО</p>
     {% endfor %}
     </div>
-  <div class="clearfix clear"></div>
+    <div class="clearfix clear"></div>
     <div id="blog-pagination" class="pagination">
 
             {% include 'AtomicUserBundle:Users:pagination.html.twig' with { 'items': users } %}
