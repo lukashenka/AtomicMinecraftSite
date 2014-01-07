@@ -1,5 +1,9 @@
 {% extends 'AtomicBlogBundle::layout.html.twig' %}
 
+{% block title %}
+Новости сервера страница {{currentPage}}
+{% endblock title %}
+
 {% block content %}
 {% if is_user_admin %}
 <a href="{{path("AtomicBlogBundle_blog_create")}}">Новый пост</a>

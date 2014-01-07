@@ -1,6 +1,10 @@
 
 {% extends '::base.html.twig' %}
 
+{% block title %}
+Начать играть на сервере Atomic.im
+{% endblock title %}
+
 {% block content %}
 {% if is_user_administrator %}
 <a href="{{path("AtomicFirstStartBundle_addstep")}}">Добавить шаг</a>
