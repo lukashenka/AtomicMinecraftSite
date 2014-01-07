@@ -13,7 +13,7 @@ class StatusChecker {
      * Prepares the class.
      * @param int    $timeout   default(3)
      */
-    public function __construct($timeout = 0.5) {
+    public function __construct($timeout = 1) {
         $this->timeout = $timeout;
     }
 

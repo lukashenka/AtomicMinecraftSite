@@ -26,7 +26,7 @@ monolog:
 
 assetic:
     use_controller: true
-    bundles: [ AtomicUserBundle ]
+    bundles: [ AtomicUserBundle, AtomicServerBundle ]
 
 #swiftmailer:
 #    delivery_address: me@example.com

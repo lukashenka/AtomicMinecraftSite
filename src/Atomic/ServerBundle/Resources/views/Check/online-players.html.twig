@@ -1,14 +1,44 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+Онлайн на сервере {{server.name}}
+{% endblock title %}
+
+ {% block stylesheets_additional  %}
+
+{% stylesheets '@AtomicServerBundle/Resources/public/css/*' %}
+<link rel="stylesheet" href="{{ asset_url }}">
+{% endstylesheets %}
+
+{% endblock stylesheets_additional %}
+
 {% block content %}
 <div class="blog-item">
-    <h1>Онлайн на сервере {{server.name}}</h1>
-    <ol>  
+    <div id="users-block">
+        <h1>Онлайн на сервере {{server.name}}</h1>
+
     {%for player in players %}
-            <li><div class="player-name">{{player.username}}</div></li>
+
+        <div class="user-block">
+            <div class="username"><a href="{{path("atomic_user_show", { 'name': player.username })}}">{{player.username}} </a></div>
+            <div class="user-isometric-image">
+
+            {% if player.skin is not null %}
+                <a href="{{path("atomic_user_show", { 'name': player.username })}}">
+                    <img src="/{{player.skin.isometricSkin}}"/>
+                </a>
+                {% else %}
+                <a href="{{path("atomic_user_show", { 'name': player.username })}}">
+                    <img src="/players-data/default/isometric.png" />
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
     {%else %}
-            <div class="notify-novalues">Нет игроков онлайн</div>
+        <div class="notify-novalues">Нет игроков онлайн</div>
     {%endfor %}
-        </ol> 
+
     </div>
+</div>
 {% endblock %}

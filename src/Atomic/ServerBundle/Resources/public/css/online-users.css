@@ -1,0 +1,50 @@
+.user-block {
+    width: 110px;
+    float: left;
+    height: 146px;
+    background: white;
+    margin: 10px;
+    box-shadow: 1px 1px 1px rgb(223, 223, 223);
+}
+
+.user-block  *{
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -kthtml-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+.user-block .username {
+    text-align: center;
+    padding: 2px;
+    background: black;
+
+}
+
+.user-block .username a{
+    color: white;
+
+}
+
+.user-block:hover .username{
+    background: white;
+}
+
+.user-block:hover .username a{
+    color: black;
+}
+
+.user-block .user-isometric-image {
+    padding: 8px;
+
+}
+.user-block .user-isometric-image img{
+    width: 80px;
+}
+
+
+#users-block
+{
+    display: inline-block;
+}
