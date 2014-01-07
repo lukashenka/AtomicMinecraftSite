@@ -23,9 +23,9 @@ class MinecraftQuery {
     private $Players;
     private $Info;
 
-    public function Connect($Ip, $Port = 25565, $Timeout = 1) {
+    public function Connect($Ip, $Port = 25565, $Timeout = 0.5) {
         if (!is_int($Timeout) || $Timeout < 0) {
-            throw new InvalidArgumentException('Timeout must be an integer.');
+          //  throw new InvalidArgumentException('Timeout must be an integer.');
         }
 
         $this->Socket = @FSockOpen('udp://' . $Ip, (int) $Port, $ErrNo, $ErrStr, $Timeout);
