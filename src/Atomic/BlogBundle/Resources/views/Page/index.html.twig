@@ -1,7 +1,9 @@
 {% extends 'AtomicBlogBundle::layout.html.twig' %}
 
 {% block title %}
+{% if currentPage is not null %}
 Новости сервера страница {{currentPage}}
+{% endif %}
 {% endblock title %}
 
 {% block content %}
