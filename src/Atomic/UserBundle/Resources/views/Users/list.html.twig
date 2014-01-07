@@ -12,33 +12,36 @@
 {% endblock stylesheets_additional %}
 
 {% block content %}
-<div class="blog-item users-block">
+<div class="blog-item ">
     <h1>Игроки сервера Atomic</h1>
+    <div id="users-block">
   {% for user in users %}
 
-        <div class="user-block">
-            <div class="username"><a href="{{path("atomic_user_show", { 'name': user.username })}}">{{user.username}} </a></div>
-            <div class="user-isometric-image">
+            <div class="user-block">
+                <div class="username"><a href="{{path("atomic_user_show", { 'name': user.username })}}">{{user.username}} </a></div>
+                <div class="user-isometric-image">
 
             {% if user.skin is not null %}
-                <a href="{{path("atomic_user_show", { 'name': user.username })}}">
-                <img src="/{{user.skin.isometricSkin}}" width="80"/>
-                </a>
+                    <a href="{{path("atomic_user_show", { 'name': user.username })}}">
+                        <img src="/{{user.skin.isometricSkin}}"/>
+                    </a>
                 {% else %}
-                <a href="{{path("atomic_user_show", { 'name': user.username })}}">
-                <img src="/players-data/default/isometric.png" width="80"/>
-                </a>
+                    <a href="{{path("atomic_user_show", { 'name': user.username })}}">
+                        <img src="/players-data/default/isometric.png" />
+                    </a>
                 {% endif %}
+                </div>
             </div>
-        </div>
     {% else %}
-        <p>Чего? Нету пользователей? оО</p>
+            <p>Чего? Нету пользователей? оО</p>
     {% endfor %}
+        </div>
     </div>
     <div class="clearfix clear"></div>
     <div id="blog-pagination" class="pagination">
 
             {% include 'AtomicUserBundle:Users:pagination.html.twig' with { 'items': users } %}
     </div>
+
 {% endblock content %}
 

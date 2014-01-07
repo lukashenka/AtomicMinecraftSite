@@ -9,7 +9,7 @@ use Atomic\ShopBundle\Entity\Iconomy;
 
 class UsersController extends Controller {
 
-    private $itemsPerPage = 50;
+    private $itemsPerPage = 52;
 
     public function showAction($name) {
 
